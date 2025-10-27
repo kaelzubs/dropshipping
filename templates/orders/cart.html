@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+<h3>Your cart</h3>
+<table class="table table-striped">
+  <thead>
+    <tr><th>Product</th><th>Price</th><th>Qty</th><th>Total</th><th></th></tr>
+  </thead>
+  <tbody>
+    {% for i in cart_items %}
+      <tr>
+        <td>{{ i.product.title }}</td>
+        <td>₦{{ i.price }}</td>
+        <td>{{ i.quantity }}</td>
+        <td>₦{{ i.line_total }}</td>
+        <td>
+          <a class="btn btn-sm btn-outline-danger" href="{% url 'orders:cart_remove' i.product.id %}">Remove</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="text-right">
+  <p><strong>Subtotal:</strong> ₦{{ totals.subtotal }}</p>
+  <p><strong>Shipping:</strong> ₦{{ totals.shipping }}</p>
+  <p><strong>Total:</strong> ₦{{ totals.total }}</p>
+</div>
+<a class="btn btn-primary" href="{% url 'orders:checkout' %}">Checkout</a>
+{% endblock %}

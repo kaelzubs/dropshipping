@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}Privacy{% endblock %}
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow">
+        <div class="card-body p-5">
+          <h2 class="mb-3 text-center">Privacy Policy</h2>
+          <p class="text-muted text-center">Last updated: {{ last_updated }}</p>
+
+          <h4>1. Introduction</h4>
+          <p>
+            {{ store_name }} respects your privacy and is committed to protecting your personal data.
+            This Privacy Policy explains how we collect, use, disclose, and safeguard your information
+            when you visit and make purchases on our site.
+          </p>
+
+          <h4>2. Information we collect</h4>
+          <ul>
+            <li><strong>Account & order data:</strong> name, email, phone, billing and shipping address, order history.</li>
+            <li><strong>Payment data:</strong> processed securely by third‑party payment processors (we do not store full card details).</li>
+            <li><strong>Technical data:</strong> IP address, device info, browser type, pages visited, referral URLs, cookies.</li>
+            <li><strong>Communications:</strong> messages you send via contact forms, support emails, or chat.</li>
+          </ul>
+
+          <h4>3. How we use your information</h4>
+          <ul>
+            <li><strong>Order fulfillment:</strong> processing orders, shipping via suppliers (dropshipping), and delivery updates.</li>
+            <li><strong>Customer support:</strong> responding to inquiries and resolving issues.</li>
+            <li><strong>Service improvement:</strong> analytics to improve site performance and user experience.</li>
+            <li><strong>Legal compliance:</strong> fraud prevention, accounting, and regulatory requirements.</li>
+            <li><strong>Marketing (optional):</strong> newsletters and offers with your consent; you can unsubscribe anytime.</li>
+          </ul>
+
+          <h4>4. Sharing of information</h4>
+          <ul>
+            <li><strong>Suppliers & logistics:</strong> to fulfill orders (name, address, phone, and product details).</li>
+            <li><strong>Payment processors:</strong> to process payments securely.</li>
+            <li><strong>Service providers:</strong> hosting, email, analytics, and customer support tools.</li>
+            <li><strong>Legal authorities:</strong> when required by law or to protect our rights and users.</li>
+          </ul>
+
+          <h4>5. International transfers</h4>
+          <p>
+            As part of the dropshipping model, your data may be transferred to suppliers or service providers
+            outside {{ jurisdiction }}. We take reasonable steps to ensure appropriate safeguards are in place.
+          </p>
+
+          <h4>6. Data retention</h4>
+          <p>
+            We retain personal data for as long as necessary to fulfill the purposes outlined in this policy,
+            and then for legitimate business or legal requirements. Typical retention for order records is
+            {{ data_retention_months }} months unless longer periods are mandated by law.
+          </p>
+
+          <h4>7. Your rights</h4>
+          <p>
+            Depending on your jurisdiction, you may have rights to access, correct, delete, or restrict processing
+            of your personal data, and to object to marketing communications. To exercise these rights, contact
+            <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
+          </p>
+
+          <h4>8. Cookies and tracking</h4>
+          <p>
+            We use cookies and similar technologies to enhance functionality and analyze traffic. You can manage
+            cookies through your browser settings. Some features may not function properly without cookies.
+          </p>
+
+          <h4>9. Security</h4>
+          <p>
+            We implement administrative, technical, and physical safeguards to protect your information.
+            However, no method of transmission over the Internet is 100% secure; use the site at your own risk.
+          </p>
+
+          <h4>10. Children’s privacy</h4>
+          <p>
+            Our services are not directed to children under 13 (or the age defined in your jurisdiction). We do not
+            knowingly collect personal data from children. If you believe a child has provided us data, contact us to remove it.
+          </p>
+
+          <h4>11. Third‑party links</h4>
+          <p>
+            Our site may contain links to third‑party websites. We are not responsible for the privacy practices
+            of those sites. Review their policies before providing personal information.
+          </p>
+
+          <h4>12. Changes to this policy</h4>
+          <p>
+            We may update this Privacy Policy from time to time. Material changes will be indicated by updating
+            the “Last updated” date above. Continued use of the site signifies acceptance of the revised policy.
+          </p>
+
+          <h4>13. Contact</h4>
+          <p>
+            Questions or requests regarding privacy can be sent to <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
+          </p>
+
+          <div class="text-center mt-4">
+            <a href="{% url 'core:home' %}" class="btn btn-primary">Return to homepage</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

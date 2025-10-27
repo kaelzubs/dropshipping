@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="row mb-3">
+  <div class="col">
+    <h3>All products</h3>
+  </div>
+</div>
+<div class="row">
+  {% for product in products %}
+    <div class="col-md-3 mb-4">
+      <div class="card h-100">
+        {% if product.image %}<img src="{{ product.image.url }}" class="card-img-top">{% endif %}
+        <div class="card-body">
+          <h6 class="card-title">{{ product.title }}</h6>
+          <p>₦{{ product.price }}</p>
+          <a href="{% url 'catalog:detail' product.slug %}" class="btn btn-primary btn-sm">View</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="col">No products yet.</div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title %}Terms & Conditions{% endblock %}
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow">
+        <div class="card-body p-5">
+          <h2 class="mb-3 text-center">Terms & Conditions</h2>
+          <p class="text-muted text-center">Last updated: {{ last_updated }}</p>
+
+          <h4>1. Introduction</h4>
+          <p>
+            Welcome to <strong>{{ store_name }}</strong>. By accessing or using our website and services,
+            you agree to these Terms & Conditions. Please read them carefully before placing any orders.
+          </p>
+
+          <h4>2. Dropshipping model</h4>
+          <p>
+            We operate a dropshipping business. Products ship directly from our suppliers to you.
+            Delivery times, packaging, and availability may vary by supplier and destination.
+          </p>
+
+          <h4>3. Orders and payments</h4>
+          <ul>
+            <li>All prices are listed in {{ currency_label }} (unless stated otherwise).</li>
+            <li>Payment is due in full at checkout using accepted payment methods displayed on the site.</li>
+            <li>We may cancel or refuse any order at our discretion (e.g., suspected fraud or stock issues).</li>
+          </ul>
+
+          <h4>4. Shipping and delivery</h4>
+          <p>
+            Estimated delivery windows shown at checkout are guidance, not guarantees.
+            International deliveries may be affected by customs, local carriers, or unforeseen delays.
+          </p>
+
+          <h4>5. Customs, duties, and taxes</h4>
+          <p>
+            You are responsible for any applicable customs duties, VAT, and local taxes required by your jurisdiction.
+            Please check local regulations before ordering.
+          </p>
+
+          <h4>6. Returns and refunds</h4>
+          <ul>
+            <li>We accept returns for defective or damaged items reported within {{ return_window_days }} days of delivery.</li>
+            <li>Return approval and instructions must be obtained from our support team before sending items back.</li>
+            <li>Refunds are issued after supplier confirmation and may exclude original shipping fees where applicable.</li>
+          </ul>
+
+          <h4>7. Product descriptions</h4>
+          <p>
+            We strive for accuracy, but minor variations in color, specifications, or packaging may occur.
+            If a product is materially misdescribed, contact support for resolution.
+          </p>
+
+          <h4>8. User responsibilities</h4>
+          <p>
+            Provide accurate shipping details and ensure availability to receive parcels.
+            We are not liable for delays or losses arising from incorrect addresses or missed deliveries.
+          </p>
+
+          <h4>9. Limitation of liability</h4>
+          <p>
+            To the fullest extent permitted by law, {{ store_name }} is not liable for indirect or consequential losses.
+            Our total liability is limited to the amount paid for the relevant order.
+          </p>
+
+          <h4>10. Privacy</h4>
+          <p>
+            We process personal data in accordance with our Privacy Policy. By using our services, you consent to such processing.
+          </p>
+
+          <h4>11. Changes to terms</h4>
+          <p>
+            We may modify these Terms & Conditions at any time. Continued use of the site after updates constitutes acceptance.
+          </p>
+
+          <h4>12. Contact</h4>
+          <p>
+            Questions? Email <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
+          </p>
+
+          <div class="text-center mt-4">
+            <a href="{% url 'core:home' %}" class="btn btn-primary">Return to homepage</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

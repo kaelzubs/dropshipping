@@ -1,0 +1,78 @@
+<div id="cookieBanner" class="fixed-bottom d-none">
+  <div class="container">
+    <div class="card shadow mb-3">
+      <div class="card-body">
+        <h5 class="card-title">We use cookies</h5>
+        <p class="card-text mb-2">
+          We use essential cookies to make our site work. We’d also like to use optional analytics and marketing
+          cookies to improve your experience. You can change your choices at any time.
+          <a href="{% url 'core:cookie_settings' %}">Cookie settings</a> | 
+          <a href="{% url 'suppliers:privacy' %}">Privacy policy</a>
+        </p>
+
+        <div class="form-inline">
+          <div class="custom-control custom-checkbox mr-3">
+            <input type="checkbox" class="custom-control-input" id="consentAnalytics">
+            <label class="custom-control-label" for="consentAnalytics">Analytics</label>
+          </div>
+          <div class="custom-control custom-checkbox mr-3">
+            <input type="checkbox" class="custom-control-input" id="consentMarketing">
+            <label class="custom-control-label" for="consentMarketing">Marketing</label>
+          </div>
+          <button class="btn btn-primary mr-2" id="acceptSelected">Save choices</button>
+          <button class="btn btn-success" id="acceptAll">Accept all</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var CONSENT_COOKIE = "cookie_consent";
+
+  function getConsent() {
+    var m = document.cookie.match(new RegExp('(^| )' + CONSENT_COOKIE + '=([^;]+)'));
+    if (!m) return null;
+    try { return JSON.parse(decodeURIComponent(m[2])); } catch(e) { return null; }
+  }
+
+  function setConsent(prefs) {
+    var value = encodeURIComponent(JSON.stringify(prefs));
+    var maxAge = 365*24*60*60;
+    var secure = location.protocol === "https:" ? "; Secure" : "";
+    document.cookie = CONSENT_COOKIE + "=" + value + "; Max-Age=" + maxAge + "; Path=/; SameSite=Lax" + secure;
+  }
+
+  function showBannerIfNeeded() {
+    var c = getConsent();
+    if (!c) {
+      document.getElementById("cookieBanner").classList.remove("d-none");
+    } else {
+      window.dispatchEvent(new CustomEvent("cookie-consent-ready", { detail: c }));
+    }
+  }
+
+  document.getElementById("acceptAll")?.addEventListener("click", function() {
+    var prefs = { essential: true, analytics: true, marketing: true, version: 1, timestamp: new Date().toISOString() };
+    setConsent(prefs);
+    document.getElementById("cookieBanner").classList.add("d-none");
+    window.dispatchEvent(new CustomEvent("cookie-consent-ready", { detail: prefs }));
+  });
+
+  document.getElementById("acceptSelected")?.addEventListener("click", function() {
+    var prefs = {
+      essential: true,
+      analytics: document.getElementById("consentAnalytics").checked,
+      marketing: document.getElementById("consentMarketing").checked,
+      version: 1,
+      timestamp: new Date().toISOString()
+    };
+    setConsent(prefs);
+    document.getElementById("cookieBanner").classList.add("d-none");
+    window.dispatchEvent(new CustomEvent("cookie-consent-ready", { detail: prefs }));
+  });
+
+  showBannerIfNeeded();
+})();
+</script>

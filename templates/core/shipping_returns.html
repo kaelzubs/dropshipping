@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Shipping Returns{% endblock %}
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow">
+        <div class="card-body p-5">
+          <h2 class="mb-3 text-center">Shipping & Returns</h2>
+          <p class="text-muted text-center">Last updated: {{ last_updated }}</p>
+
+          <h4>1. Shipping Policy</h4>
+          <p>
+            {{ store_name }} operates on a dropshipping model. This means your order is shipped
+            directly from our suppliers to your address. Delivery times may vary depending on
+            supplier location and your destination country.
+          </p>
+          <ul>
+            <li><strong>Processing time:</strong> Orders are typically processed within 2–5 business days.</li>
+            <li><strong>Estimated delivery:</strong> 7–21 business days depending on location.</li>
+            <li><strong>Tracking:</strong> Tracking numbers are provided once available.</li>
+            <li><strong>Customs & duties:</strong> Customers are responsible for any applicable import duties or taxes.</li>
+          </ul>
+
+          <h4>2. Delays</h4>
+          <p>
+            While we strive to meet estimated delivery times, delays may occur due to customs,
+            local postal services, or unforeseen supplier issues. We are not liable for delays
+            outside our control.
+          </p>
+
+          <h4>3. Return Policy</h4>
+          <p>
+            We want you to be satisfied with your purchase. If you receive a defective or damaged
+            item, you may request a return within {{ return_window_days }} days of delivery.
+          </p>
+          <ul>
+            <li>Items must be unused and in original packaging.</li>
+            <li>Return requests must be approved by our support team before shipping items back.</li>
+            <li>Customers are responsible for return shipping costs unless the item is defective.</li>
+          </ul>
+
+          <h4>4. Refunds</h4>
+          <p>
+            Once your return is received and inspected, we will notify you of the approval or
+            rejection of your refund. Approved refunds will be processed to your original payment
+            method within 5–10 business days.
+          </p>
+
+          <h4>5. Exchanges</h4>
+          <p>
+            We only replace items if they are defective or damaged. If you need an exchange,
+            please contact us at <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
+          </p>
+
+          <h4>6. Contact Us</h4>
+          <p>
+            For questions about shipping or returns, email us at
+            <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
+          </p>
+
+          <div class="text-center mt-4">
+            <a href="{% url 'core:home' %}" class="btn btn-primary">Return to Homepage</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

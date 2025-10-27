@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-4">Login in Account</h3>
+
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+              {{ form.username.label_tag }}
+              {{ form.username }}
+              <div class="text-danger small">{{ form.username.errors }}</div>
+            </div>
+            <div class="form-group">
+              {{ form.password.label_tag }}
+              <div class="input-group">
+                {{ form.password }}
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-outline-primary" id="togglePwd">Show</button>
+                </div>
+              </div>
+              <div class="text-danger small">{{ form.password.errors }}</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+          </form>
+        </div>
+        <div class="card-footer text-center text-muted">
+          Don’t have an account? <a href="{% url 'accounts:register' %}">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById("togglePwd");
+  const pwdInput = document.getElementById("id_password");
+  toggleBtn.addEventListener("click", function () {
+    const isPassword = pwdInput.type === "password";
+    pwdInput.type = isPassword ? "text" : "password";
+    toggleBtn.textContent = isPassword ? "Hide" : "Show";
+  });
+</script>
+{% endblock %}
+

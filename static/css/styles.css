@@ -1,0 +1,12 @@
+html, body {
+  height: 100vh;
+  margin: 0;
+}
+.footer {
+    position: relative;
+    margin-top: 155px;
+}
+.card-title { font-weight: 600; }
+.navbar-brand { font-weight: 700; }
+.cursor-pointer { cursor: pointer; }
+#otherImage { border-radius: 3px; }

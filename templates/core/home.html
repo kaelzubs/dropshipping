@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="jumbotron" style="background-image: url('/static/img/product.jpg'); background-size: cover; background-position: center; color: white;">
+  <h1 class="display-4">Your dropshipping store</h1>
+  <p class="lead">Curated products, fulfilled by trusted suppliers.</p>
+  <a href="{% url 'catalog:list' %}" class="btn btn-primary btn-lg">Shop now</a>
+</div>
+
+<div class="row">
+  {% for product in products %}
+    <div class="col-md-3 mb-4">
+      <div class="card h-100">
+        {% if product.image %}<img src="{{ product.image.url }}" class="card-img-top">{% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">₦{{ product.price }}</p>
+          <a href="{% url 'catalog:detail' product.slug %}" class="btn btn-outline-primary btn-sm">View</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

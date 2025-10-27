@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Faqs{% endblock %}
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow">
+        <div class="card-body p-5">
+          <h2 class="mb-4 text-center">Frequently Asked Questions</h2>
+          <p class="text-muted text-center">Last updated: {{ last_updated }}</p>
+
+          <div id="faqAccordion">
+            {% for item in faqs %}
+            <div class="card">
+              <div class="card-header" id="heading{{ forloop.counter }}">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse"
+                          data-target="#collapse{{ forloop.counter }}"
+                          aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+                    {{ item.question }}
+                  </button>
+                </h5>
+              </div>
+              <div id="collapse{{ forloop.counter }}" class="collapse"
+                   aria-labelledby="heading{{ forloop.counter }}" data-parent="#faqAccordion">
+                <div class="card-body">
+                  {{ item.answer }}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div class="text-center mt-4">
+            <a href="{% url 'core:home' %}" class="btn btn-primary">Return to Homepage</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
