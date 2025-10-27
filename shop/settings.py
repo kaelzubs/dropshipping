@@ -39,7 +39,7 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 # Allow all hosts in development, restrict in production
 # DEBUG = os.getenv('DEBUG')
-DEBUG=False
+DEBUG=True
 if DEBUG == True:
     ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
