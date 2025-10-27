@@ -18,12 +18,10 @@ load_dotenv(BASE_DIR / '.env')
 # stripe.api_key =  'STRIPE_API_KEY'  # env var in production
 stripe.api_key = os.getenv('STRIPE_API_KEY')
 
-@login_required
 def cart_detail(request):
     cart = Cart(request)
     return render(request, 'orders/cart.html', {'cart_items': list(cart.items()), 'totals': cart.totals()})
 
-@login_required
 def cart_add(request, product_id):
     cart = Cart(request)
     if request.method == 'POST':
@@ -35,7 +33,7 @@ def cart_remove(request, product_id):
     cart = Cart(request)
     cart.remove(product_id)
     return redirect('orders:cart_detail')
-
+@login_required
 def checkout(request):
     cart = Cart(request)
     items = list(cart.items())

@@ -73,10 +73,6 @@ def faq(request):
     }
     return render(request, "core/faq.html", context)
 
-# views.py
-from django.shortcuts import render
-from datetime import date
-
 def about_us(request):
     context = {
         "last_updated": date.today().strftime("%B %d, %Y"),
