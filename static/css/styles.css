@@ -112,11 +112,11 @@ body {
 
 /* Default styling for More Images */
 .more-images {
-  display: block;
-  /* flex-wrap: nowrap;       desktop/tablet: wrap into multiple rows if needed */
+  display: flex;
+  flex-wrap: nowrap;    /*    desktop/tablet: wrap into multiple rows if needed */
   gap: 10px;
   overflow: hidden;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 /* Thumbnails */
@@ -137,10 +137,11 @@ body {
 /* Force horizontal row on mobile */
 @media (max-width: 576px) {
   .more-images {
-    display: block;
-    /* flex-wrap: nowrap;          keep them in one line */
-     overflow: hidden;       /*    enable horizontal scroll */
-    /* -webkit-overflow-scrolling: touch; smooth iOS scroll */
+    display: flex;
+    flex-wrap: nowrap;      /*      keep them in one line */
+    overflow: hidden;       /*    enable horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    padding-right: 3px;
   }
 
   .more-images img {
@@ -157,7 +158,7 @@ body {
 }
 
 .bgImg {
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 /* Make table text slightly smaller and cleaner */
