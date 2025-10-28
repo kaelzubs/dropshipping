@@ -1,29 +1,81 @@
 {% extends 'base.html' %}
 {% block title %}Cart{% endblock %}
 {% block content %}
-<h3>Your cart</h3>
-<table class="table table-striped">
-  <thead>
-    <tr><th>Product</th><th>Price</th><th>Qty</th><th>Total</th><th></th></tr>
-  </thead>
-  <tbody>
-    {% for i in cart_items %}
-      <tr>
-        <td>{{ i.product.title }}</td>
-        <td>₦{{ i.price }}</td>
-        <td>{{ i.quantity }}</td>
-        <td>₦{{ i.line_total }}</td>
-        <td>
-          <a class="btn btn-sm btn-outline-danger" href="{% url 'orders:cart_remove' i.product.id %}">Remove</a>
-        </td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
-<div class="text-right">
-  <p><strong>Subtotal:</strong> ₦{{ totals.subtotal }}</p>
-  <p><strong>Shipping:</strong> ₦{{ totals.shipping }}</p>
-  <p><strong>Total:</strong> ₦{{ totals.total }}</p>
+<div class="container py-5">
+  <div class="row">
+    <!-- Cart Items -->
+    <div class="col-lg-8 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Your Cart</h3>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-striped mb-0">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Total</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in cart_items %}
+                  <tr>
+                    <td>{{ i.product.title }}</td>
+                    <td>₦{{ i.price }}</td>
+                    <td>{{ i.quantity }}</td>
+                    <td>₦{{ i.line_total }}</td>
+                    <td>
+                      <a class="btn btn-sm btn-outline-danger"
+                         href="{% url 'orders:cart_remove' i.product.id %}">
+                        Remove
+                      </a>
+                    </td>
+                  </tr>
+                {% empty %}
+                  <tr>
+                    <td colspan="5" class="text-center text-muted py-4">
+                      Your cart is empty.
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Order Summary</h5>
+        </div>
+        <div class="card-body">
+          <p class="d-flex justify-content-between">
+            <span><strong>Subtotal:</strong></span>
+            <span>₦{{ totals.subtotal }}</span>
+          </p>
+          <p class="d-flex justify-content-between">
+            <span><strong>Shipping:</strong></span>
+            <span>₦{{ totals.shipping }}</span>
+          </p>
+          <hr>
+          <p class="d-flex justify-content-between font-weight-bold">
+            <span>Total:</span>
+            <span>₦{{ totals.total }}</span>
+          </p>
+          <a class="btn btn-primary btn-block mt-3"
+             href="{% url 'orders:checkout' %}">
+            Proceed to Checkout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<a class="btn btn-primary" href="{% url 'orders:checkout' %}">Checkout</a>
 {% endblock %}
