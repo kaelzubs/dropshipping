@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block title %}{{ product.title }}{% endblock %}
 {% block content %}
 <div class="row">
@@ -23,7 +24,7 @@
   </div>
   <div class="col-md-6 mb-5">
     <h2>{{ product.title }}</h2>
-    <p class="text-muted">₦{{ product.price }}</p>
+    <p class="text-muted">₦{{ product.price|floatformat:2|intcomma }}</p>
     <p>{{ product.description }}</p>
     <form method="post" action="{% url 'orders:cart_add' product.id %}">
       {% csrf_token %}

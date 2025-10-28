@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block title %}Products{% endblock %}
 {% block content %}
 <div class="row mb-3">
@@ -13,7 +14,7 @@
         {% if product.image %}<img src="{{ product.image.url }}" class="card-img-top">{% endif %}
         <div class="card-body">
           <h6 class="card-title">{{ product.title }}</h6>
-          <p>₦{{ product.price }}</p>
+          <p>₦{{ product.price|floatformat:2|intcomma }}</p>
           <a href="{% url 'catalog:detail' product.slug %}" class="btn btn-primary btn-sm">View</a>
         </div>
       </div>
