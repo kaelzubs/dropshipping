@@ -148,3 +148,30 @@ body {
     max-width: 70px;   /* even smaller thumbnails */
   }
 }
+
+/* Make table text slightly smaller and cleaner */
+.table-sm td, 
+.table-sm th {
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+/* Align numbers neatly */
+.table td.text-right, 
+.table th.text-right {
+  text-align: right;
+}
+
+.table td.text-center, 
+.table th.text-center {
+  text-align: center;
+}
+
+/* Improve spacing on mobile */
+@media (max-width: 576px) {
+  .table-sm td, 
+  .table-sm th {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+  }
+}
