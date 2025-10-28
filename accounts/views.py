@@ -164,7 +164,8 @@ def password_reset_request(request):
             user = User.objects.get(email=email)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             token = token_generator.make_token(user)
-            reset_link = request.build_absolute_uri(f"/reset/{uid}/{token}/")
+            # uri_path = "{% url 'accounts:reset_password' %}"
+            reset_link = request.build_absolute_uri(f"/accounts/reset/{uid}/{token}/")
             send_mail(
                 "Password Reset",
                 f"Click here to reset your password: {reset_link}",
