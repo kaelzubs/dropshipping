@@ -112,8 +112,8 @@ body {
 
 /* Default styling for More Images */
 .more-images {
-  display: flex;
-  flex-wrap: nowrap;       /* desktop/tablet: wrap into multiple rows if needed */
+  display: block;
+  /* flex-wrap: nowrap;       desktop/tablet: wrap into multiple rows if needed */
   gap: 10px;
   overflow: hidden;
   margin-top: 15px;
@@ -137,13 +137,14 @@ body {
 /* Force horizontal row on mobile */
 @media (max-width: 576px) {
   .more-images {
-    flex-wrap: nowrap;          /* keep them in one line */
+    display: block;
+    /* flex-wrap: nowrap;          keep them in one line */
      overflow: hidden;       /*    enable horizontal scroll */
     /* -webkit-overflow-scrolling: touch; smooth iOS scroll */
   }
 
   .more-images img {
-    max-width: 50px;            /* smaller thumbnails for phones */
+    max-width: 60px;            /* smaller thumbnails for phones */
     /* flex-shrink: 0;             prevent shrinking */
   }
 }
@@ -156,7 +157,7 @@ body {
 }
 
 .bgImg {
-  margin-top: 1000px;
+  margin-top: 100px;
 }
 
 /* Make table text slightly smaller and cleaner */
