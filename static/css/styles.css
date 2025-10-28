@@ -115,6 +115,7 @@ body {
   display: block;
   flex-wrap: nowrap;       /* desktop/tablet: wrap into multiple rows if needed */
   /* gap: 10px; */
+  overflow: hidden;
   margin-top: 15px;
 }
 
@@ -136,7 +137,7 @@ body {
 /* Force horizontal row on mobile */
 @media (max-width: 576px) {
   .more-images {
-    flex-wrap: nowrap;          /* keep them in one line */
+    flex-wrap: wrap;          /* keep them in one line */
      overflow-x: auto;       /*    enable horizontal scroll */
     /* -webkit-overflow-scrolling: touch; smooth iOS scroll */
   }
@@ -152,6 +153,10 @@ body {
   .more-images img {
     max-width: 80px;   /* shrink thumbnails */
   }
+}
+
+.bgImg {
+  margin-top: 30px;
 }
 
 /* Make table text slightly smaller and cleaner */
