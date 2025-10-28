@@ -160,25 +160,24 @@ body {
   }
 } */
 
-/* Container for more images */
+/* Container for vertical thumbnails */
 .more-images {
-  display: flex;          /* arrange thumbnails in a row */
-  flex-wrap: nowrap;      /* keep them in one line */
-  gap: 10px;              /* space between images */
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  gap: 10px;                /* space between images */
   margin-top: 15px;
-  overflow-x: auto;       /* allow horizontal scroll if too many */
-  padding-bottom: 5px;
+  max-height: 500px;        /* optional: limit height */
+  overflow-y: auto;         /* scroll if too many images */
 }
 
 /* Thumbnails */
 .more-images img {
-  max-width: 100px;       /* thumbnail size */
+  max-width: 80px;          /* thumbnail width */
   height: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.2s ease;
-  flex-shrink: 0;         /* prevent shrinking */
 }
 
 .more-images img:hover {
@@ -186,10 +185,10 @@ body {
   border-color: #007bff;
 }
 
-/* Mobile adjustments */
+/* On mobile, shrink thumbnails a bit */
 @media (max-width: 576px) {
   .more-images img {
-    max-width: 70px;      /* smaller thumbnails on phones */
+    max-width: 60px;
   }
 }
 
