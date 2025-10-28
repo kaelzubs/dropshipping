@@ -162,23 +162,23 @@ body {
 
 /* Container for more images */
 .more-images {
-  display: flex;              /* arrange children in a row */
-  flex-wrap: nowrap;          /* keep them in one line */
-  gap: 10px;                  /* spacing between thumbnails */
+  display: flex;          /* arrange children in a row */
+  flex-wrap: nowrap;      /* keep them in one line */
+  gap: 10px;              /* spacing between thumbnails */
   margin-top: 15px;
-  overflow-x: auto;            /* allow horizontal scroll if too many */
+  overflow-x: auto;       /* allow horizontal scroll if too many */
   padding-bottom: 5px;
 }
 
 /* Thumbnails */
 .more-images img {
-  max-width: 100px;           /* thumbnail size */
+  max-width: 100px;       /* thumbnail size */
   height: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.2s ease;
-  flex-shrink: 0;             /* prevent shrinking */
+  flex-shrink: 0;         /* prevent shrinking */
 }
 
 .more-images img:hover {
@@ -189,7 +189,7 @@ body {
 /* Mobile adjustments */
 @media (max-width: 576px) {
   .more-images img {
-    max-width: 70px;          /* smaller thumbnails on phones */
+    max-width: 70px;      /* smaller thumbnails on phones */
   }
 }
 
