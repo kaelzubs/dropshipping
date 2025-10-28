@@ -112,9 +112,9 @@ body {
 
 /* Default styling for More Images */
 .more-images {
-  display: block;
+  display: flex;
   flex-wrap: nowrap;       /* desktop/tablet: wrap into multiple rows if needed */
-  /* gap: 10px; */
+  gap: 10px;
   overflow: hidden;
   margin-top: 15px;
 }
@@ -138,7 +138,7 @@ body {
 @media (max-width: 576px) {
   .more-images {
     flex-wrap: wrap;          /* keep them in one line */
-     overflow-x: auto;       /*    enable horizontal scroll */
+     overflow: hidden;       /*    enable horizontal scroll */
     /* -webkit-overflow-scrolling: touch; smooth iOS scroll */
   }
 
@@ -156,7 +156,7 @@ body {
 }
 
 .bgImg {
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 /* Make table text slightly smaller and cleaner */
