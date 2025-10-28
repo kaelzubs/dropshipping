@@ -136,8 +136,8 @@ body {
 /* Force horizontal row on mobile */
 @media (max-width: 576px) {
   .more-images {
-    flex-wrap: nowrap;          /* keep them in one line */
-    overflow-x: auto;           /* enable horizontal scroll */
+    flex-wrap: wrap;          /* keep them in one line */
+    /* overflow-x: auto;           enable horizontal scroll */
     /* -webkit-overflow-scrolling: touch; smooth iOS scroll */
   }
 
