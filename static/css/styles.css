@@ -137,7 +137,7 @@ body {
 /* Force horizontal row on mobile */
 @media (max-width: 576px) {
   .more-images {
-    flex-wrap: wrap;          /* keep them in one line */
+    flex-wrap: nowrap;          /* keep them in one line */
      overflow: hidden;       /*    enable horizontal scroll */
     /* -webkit-overflow-scrolling: touch; smooth iOS scroll */
   }
@@ -156,7 +156,7 @@ body {
 }
 
 .bgImg {
-  margin-top: 60px;
+  margin-top: 1000px;
 }
 
 /* Make table text slightly smaller and cleaner */
