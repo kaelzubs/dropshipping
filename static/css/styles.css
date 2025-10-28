@@ -111,7 +111,7 @@ body {
 }
 
 /* Base styling for product gallery thumbnails */
-.more-images {
+/* .more-images {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -120,6 +120,29 @@ body {
 
 .more-images img {
   max-width: 120px;   /* default size on desktop */
+  /* height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.more-images img:hover {
+  transform: scale(1.05);
+} */
+
+/* Container for more images */
+.more-images {
+  display: flex;
+  flex-wrap: nowrap;   /* keep them in one row */
+  gap: 10px;           /* space between images */
+  margin-top: 15px;
+  overflow-x: auto;    /* allow horizontal scroll if too many */
+}
+
+/* Thumbnails */
+.more-images img {
+  max-width: 100px;    /* thumbnail size */
   height: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -131,6 +154,13 @@ body {
   transform: scale(1.05);
 }
 
+@media (max-width: 576px) {
+  .more-images img {
+    max-width: 70px;
+  }
+}
+
+
 /* Tablet view */
 @media (max-width: 768px) {
   .more-images img {
@@ -140,14 +170,15 @@ body {
 
 /* Mobile view */
 @media (max-width: 576px) {
-  .more-images {
+  /* .more-images {
     justify-content: center; /* center thumbnails on small screens */
-    gap: 6px;
-  }
+    /* gap: 6px;
+  } */ 
   .more-images img {
     max-width: 70px;   /* even smaller thumbnails */
   }
 }
+
 
 /* Make table text slightly smaller and cleaner */
 .table-sm td, 
