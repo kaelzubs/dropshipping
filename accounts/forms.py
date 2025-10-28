@@ -6,19 +6,31 @@ from .models import CustomUser
 class CustomUserCreationForm(UserCreationForm):
     password1 = forms.CharField(
         label="Password",
-        widget=forms.PasswordInput(attrs={"class": "form-control"})
+        widget=forms.PasswordInput(attrs={
+            "class": "form-control",
+            "placeholder": "Enter your password"
+        })
     )
     password2 = forms.CharField(
         label="Confirm Password",
-        widget=forms.PasswordInput(attrs={"class": "form-control"})
+        widget=forms.PasswordInput(attrs={
+            "class": "form-control",
+            "placeholder": "Confirm password"
+        })
     )
 
     class Meta:
         model = CustomUser
         fields = ("username", "email")
         widgets = {
-            "username": forms.TextInput(attrs={"class": "form-control"}),
-            "email": forms.EmailInput(attrs={"class": "form-control"}),
+            "username": forms.TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Enter your username"
+            }),
+            "email": forms.EmailInput(attrs={
+                "class": "form-control",
+                "placeholder": "Enter your username or email"
+            }),
         }
         
 class LoginForm(forms.Form):

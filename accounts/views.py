@@ -137,15 +137,15 @@ def jwt_login(request):
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
             user = authenticate(request, username=username, password=password)
-
             if user is not None:
                 if user.is_active:
+                    # Issue JWT tokens
                     login(request, user)
                     return redirect("core:home")  # replace with your dashboard/home
                 else:
                     messages.error(request, "Your email is not verified. Please check your inbox.")
             else:
-                messages.error(request, "Invalid username or password.")
+                messages.error(request, "Invalid username or password. Click on the link below to reset password.")
     else:
         form = LoginForm()
 

@@ -7,10 +7,15 @@
       <div class="card shadow">
         <div class="card-body">
           <h3 class="card-title text-center mb-4">Login in Account</h3>
-
           {% if messages %}
             {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+              {% if message.tags == "error" %}
+                <div class="alert alert-danger">
+                  {{ message }}
+                </div>
+              {% else %}
+                  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+              {% endif %}
             {% endfor %}
           {% endif %}
 
@@ -33,6 +38,9 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block">Log In</button>
           </form>
+          <div class="text-center mt-3">
+            <a href="{% url 'accounts:password_reset' %}">Forgot your password?</a>
+          </div>
         </div>
         <div class="card-footer text-center text-muted">
           Don’t have an account? <a href="{% url 'accounts:register' %}">Register</a>
