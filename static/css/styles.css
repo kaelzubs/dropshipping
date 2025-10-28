@@ -132,31 +132,64 @@ body {
 } */
 
 /* Container for more images */
-.more-images {
+/* .more-images {
   display: flex;
   flex-wrap: nowrap;   /* keep them in one row */
-  gap: 10px;           /* space between images */
-  margin-top: 15px;
-  overflow-x: auto;    /* allow horizontal scroll if too many */
-}
+  /* gap: 10px;           /* space between images */
+  /* margin-top: 15px; */
+  /* overflow-x: auto;    allow horizontal scroll if too many */
+/* }
 
 /* Thumbnails */
-.more-images img {
+/* .more-images img {
   max-width: 100px;    /* thumbnail size */
-  height: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
+  /* height: auto; */
+  /* border: 1px solid #ddd; */
+  /* border-radius: 4px; */
+  /* cursor: pointer; */
+  /* transition: transform 0.2s ease; */
+/* } */  
 
-.more-images img:hover {
+/* .more-images img:hover {
   transform: scale(1.05);
 }
 
 @media (max-width: 576px) {
   .more-images img {
     max-width: 70px;
+  }
+} */
+
+/* Container for more images */
+.more-images {
+  display: flex;              /* arrange children in a row */
+  flex-wrap: nowrap;          /* keep them in one line */
+  gap: 10px;                  /* spacing between thumbnails */
+  margin-top: 15px;
+  overflow-x: auto;            /* allow horizontal scroll if too many */
+  padding-bottom: 5px;
+}
+
+/* Thumbnails */
+.more-images img {
+  max-width: 100px;           /* thumbnail size */
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;             /* prevent shrinking */
+}
+
+.more-images img:hover {
+  transform: scale(1.05);
+  border-color: #007bff;
+}
+
+/* Mobile adjustments */
+@media (max-width: 576px) {
+  .more-images img {
+    max-width: 70px;          /* smaller thumbnails on phones */
   }
 }
 
@@ -177,7 +210,7 @@ body {
   .more-images img {
     max-width: 70px;   /* even smaller thumbnails */
   }
-}
+} */
 
 
 /* Make table text slightly smaller and cleaner */
