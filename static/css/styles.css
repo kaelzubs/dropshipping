@@ -138,7 +138,7 @@ body {
   .more-images {
     flex-wrap: nowrap;          /* keep them in one line */
     overflow-x: auto;           /* enable horizontal scroll */
-    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    /* -webkit-overflow-scrolling: touch; smooth iOS scroll */
   }
 
   .more-images img {
@@ -151,13 +151,6 @@ body {
 @media (max-width: 768px) {
   .more-images img {
     max-width: 90px;   /* shrink thumbnails */
-  }
-}
-
-/* Mobile view */
-@media (max-width: 576px) {
-  .more-images img {
-    max-width: 70px;   /* even smaller thumbnails */
   }
 }
 
