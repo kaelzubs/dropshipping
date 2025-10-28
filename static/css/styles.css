@@ -162,9 +162,9 @@ body {
 
 /* Container for more images */
 .more-images {
-  display: flex;          /* arrange children in a row */
+  display: flex;          /* arrange thumbnails in a row */
   flex-wrap: nowrap;      /* keep them in one line */
-  gap: 10px;              /* spacing between thumbnails */
+  gap: 10px;              /* space between images */
   margin-top: 15px;
   overflow-x: auto;       /* allow horizontal scroll if too many */
   padding-bottom: 5px;
