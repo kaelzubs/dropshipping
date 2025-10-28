@@ -113,7 +113,7 @@ body {
 /* Default styling for More Images */
 .more-images {
   display: flex;
-  flex-wrap: wrap;       /* desktop/tablet: wrap into multiple rows if needed */
+  flex-wrap: nowrap;       /* desktop/tablet: wrap into multiple rows if needed */
   /* gap: 10px; */
   margin-top: 15px;
 }
@@ -142,15 +142,15 @@ body {
   }
 
   .more-images img {
-    max-width: 70px;            /* smaller thumbnails for phones */
-    flex-shrink: 0;             /* prevent shrinking */
+    max-width: 50px;            /* smaller thumbnails for phones */
+    /* flex-shrink: 0;             prevent shrinking */
   }
 }
 
 /* Tablet view */
 @media (max-width: 768px) {
   .more-images img {
-    max-width: 90px;   /* shrink thumbnails */
+    max-width: 80px;   /* shrink thumbnails */
   }
 }
 
