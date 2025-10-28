@@ -110,16 +110,17 @@ body {
   }
 }
 
-/* Base styling for product gallery thumbnails */
+/* Default styling for More Images */
 .more-images {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;       /* desktop/tablet: wrap into multiple rows if needed */
   gap: 10px;
   margin-top: 15px;
 }
 
+/* Thumbnails */
 .more-images img {
-  max-width: 120px;   /* default size on desktop */
+  max-width: 100px;
   height: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -129,6 +130,21 @@ body {
 
 .more-images img:hover {
   transform: scale(1.05);
+  border-color: #007bff;
+}
+
+/* Force horizontal row on mobile */
+@media (max-width: 576px) {
+  .more-images {
+    flex-wrap: nowrap;          /* keep them in one line */
+    overflow-x: auto;           /* enable horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+  }
+
+  .more-images img {
+    max-width: 70px;            /* smaller thumbnails for phones */
+    flex-shrink: 0;             /* prevent shrinking */
+  }
 }
 
 /* Tablet view */
@@ -140,10 +156,6 @@ body {
 
 /* Mobile view */
 @media (max-width: 576px) {
-  .more-images {
-    justify-content: center; /* center thumbnails on small screens */
-    gap: 6px;
-  }
   .more-images img {
     max-width: 70px;   /* even smaller thumbnails */
   }

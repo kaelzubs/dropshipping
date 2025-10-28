@@ -13,7 +13,7 @@
         <h3>More Images</h3>
         <div class="row">
           {% for image in product.images.all %}
-          <div class="col-md-3 mb-3 more-images">
+          <div class="col more-images mb-4">
             <img id="otherImage" src="{{ image.image.url }}" class="img-fluid cursor-pointer" onclick="updateMainImage(this)" alt="{{ product.title }}">
           </div>
           {% endfor %}
