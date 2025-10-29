@@ -18,39 +18,24 @@
         
         {% if products %}
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                {% comment %} {% for product in products %}
-                    <div class="col">
-                        <div class="card h-100">
-                            {% if product.image %}
-                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
-                            {% endif %}
-                            <div class="card-body">
-                                <h5 class="card-title">{{ product.title }}</h5>
-                                <p class="card-text">₦{{ product.price }}</p>
-                                <a href="{% url 'catalog:detail' product.slug %}" class="btn btn-primary">View Details</a>
-                            </div>
+                {% for product in page_obj %}
+                    <div class="col-md-3 mb-4">
+                    <div class="card h-100">
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ product.title }}</h5>
+                        <p class="card-text">₦{{ product.price|floatformat:2|intcomma }}</p>
+                        <a href="{% url 'core:search' %}" class="btn btn-sm btn-primary">View</a>
                         </div>
                     </div>
-                {% endfor %} {% endcomment %}
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    {% for product in page_obj %}
-                        <div class="col-md-3 mb-4">
-                        <div class="card h-100">
-                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
-                            <div class="card-body">
-                            <h5 class="card-title">{{ product.title }}</h5>
-                            <p class="card-text">₦{{ product.price|floatformat:2|intcomma }}</p>
-                            <a href="{% url 'core:search' product.id %}" class="btn btn-sm btn-primary">View</a>
-                            </div>
-                        </div>
-                        </div>
-                    {% empty %}
-                        <div class="col-12 text-center text-muted">
-                        <p>No products available.</p>
-                        </div>
-                    {% endfor %}
                     </div>
+                {% empty %}
+                    <div class="col-12 text-center text-muted">
+                    <p>No products available.</p>
+                    </div>
+                {% endfor %}
                 </div>
+            </div>
         {% else %}
             <p>No products found matching your search.</p>
         {% endif %}
