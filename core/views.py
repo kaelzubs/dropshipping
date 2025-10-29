@@ -1,35 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from catalog.models import Product
-from django.db.models import Q
-from django.http import HttpResponse
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.core.exceptions import PermissionDenied
-from django.core.paginator import Paginator
-
 
 
 def home(request):
     products = Product.objects.filter(is_active=True)[:12]
     return render(request, 'core/home.html', {'products': products})
-
-
-def search_product(request):
-    query = request.GET.get('q', '').strip()
-    if not query:
-        products = Product.objects.none()
-    else:
-        products = Product.objects.filter(
-            is_active=True
-        ).filter(
-            Q(title__icontains=query) | Q(description__icontains=query)
-        ).distinct()
-    products = Product.objects.filter(is_active=True).order_by('-id')
-    paginator = Paginator(products, 4)  # 12 products per page
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
-
-    return render(request, 'core/search.html', {'products': products, 'query': query, 'page_obj': page_obj})
 
 
 CONSENT_COOKIE_NAME = "cookie_consent"
