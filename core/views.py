@@ -6,7 +6,7 @@ from django.core.exceptions import PermissionDenied
 
 
 def home(request):
-    products = Product.objects.filter(is_active=True)[:12]
+    products = Product.objects.filter(is_active=True)[:8]
     return render(request, 'core/home.html', {'products': products})
 
 
