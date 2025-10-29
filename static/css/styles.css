@@ -41,7 +41,7 @@ body {
 /* Optional: tweak for smaller screens */
 @media (max-width: 576px) {
   body {
-    padding-top: 75px; /* mobile navs are usually taller */
+    padding-top: 60px; /* mobile navs are usually taller */
   }
 }
 
