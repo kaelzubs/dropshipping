@@ -35,8 +35,16 @@ body {
   background-color: #f8f9fa;
   color: #333;
   margin: 0;
-  padding: 0;
+  padding-top: 70px; /* adjust based on your navbar height */
+
 }
+/* Optional: tweak for smaller screens */
+@media (max-width: 576px) {
+  body {
+    padding-top: 90px; /* mobile navs are usually taller */
+  }
+}
+
 
 /* Navbar */
 .navbar-brand {
@@ -171,14 +179,6 @@ body {
   .more-images img {
     max-width: 80px;   /* shrink thumbnails */
   }
-}
-
-.bgImg {
-  margin-top: 90px;
-}
-
-.divMT {
-  margin-top: 90px;
 }
 
 /* Make table text slightly smaller and cleaner */
