@@ -3,6 +3,9 @@ html, body {
   width: 100%;
   overflow-x: hidden;
   height: 100%;
+  margin: 0;
+  padding: 0;
+
 }
 
 /* Optional: ensure elements don't force overflow */
@@ -27,6 +30,9 @@ main, .content, .container {
 
 main {
   flex: 1;   /* pushes footer down */
+  padding-top: 70px;   /* same as footer margin */
+  padding-bottom: 70px; /* matches top spacing */
+
 }
 
 
