@@ -15,7 +15,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products')
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True, blank=True)
-    description = models.TextAreaField = models.TextField(blank=True)
+    description = models.TextField(blank=True)
     # retail price you sell at
     price = models.DecimalField(max_digits=10, decimal_places=2)
     # supplier info
@@ -26,6 +26,9 @@ class Product(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
+    
+    class Meta:
+        ordering = ["-created_at", "title"]
 
     def save(self, *args, **kwargs):
         if not self.slug: self.slug = slugify(self.title)
