@@ -2,6 +2,7 @@
 html, body {
   width: 100%;
   overflow-x: hidden;
+  height: 100%;
 }
 
 /* Optional: ensure elements don't force overflow */
@@ -19,9 +20,20 @@ html, body {
   max-width: 100%;
 }
 
+main, .content, .container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+main {
+  flex: 1;   /* pushes footer down */
+}
+
+
 .footer {
     position: relative;
-    margin-top: 155px;
+    /* margin-top: 155px; */
+    margin-top: 20px; 
 }
 .card-title { font-weight: 600; }
 .navbar-brand { font-weight: 700; }
@@ -36,7 +48,8 @@ body {
   color: #333;
   margin: 0;
   padding-top: 70px; /* adjust based on your navbar height */
-
+  display: flex;
+  flex-direction: column;
 }
 /* Optional: tweak for smaller screens */
 @media (max-width: 576px) {
