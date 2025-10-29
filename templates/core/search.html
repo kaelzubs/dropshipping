@@ -17,7 +17,7 @@
         
         {% if products %}
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                {% for product in products %}
+                {% comment %} {% for product in products %}
                     <div class="col">
                         <div class="card h-100">
                             {% if product.image %}
@@ -30,11 +30,75 @@
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                {% endfor %} {% endcomment %}
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for product in page_obj %}
+                        <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <p class="card-text">₦{{ product.price|intcomma }}</p>
+                            <a href="{% url 'products:detail' product.id %}" class="btn btn-sm btn-primary">View</a>
+                            </div>
+                        </div>
+                        </div>
+                    {% empty %}
+                        <div class="col-12 text-center text-muted">
+                        <p>No products available.</p>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
         {% else %}
             <p>No products found matching your search.</p>
         {% endif %}
     {% endif %}
 </div>
+{% if page_obj.has_other_pages %}
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+
+    {# Previous button #}
+    {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">&laquo;</span>
+      </li>
+    {% endif %}
+
+    {# Page numbers #}
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <li class="page-item active">
+          <span class="page-link">{{ num }}</span>
+        </li>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {# Next button #}
+    {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">&raquo;</span>
+      </li>
+    {% endif %}
+
+  </ul>
+</nav>
+{% endif %}
 {% endblock %}

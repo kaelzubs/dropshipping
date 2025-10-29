@@ -5,6 +5,8 @@ from django.http import HttpResponse
 import json
 from datetime import datetime, timedelta
 from django.core.exceptions import PermissionDenied
+from django.core.paginator import Paginator
+
 
 
 def home(request):
@@ -22,8 +24,12 @@ def search_product(request):
         ).filter(
             Q(title__icontains=query) | Q(description__icontains=query)
         ).distinct()[:50]
+    
+    paginator = Paginator(products, 4)  # 12 products per page
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
 
-    return render(request, 'core/search.html', {'products': products, 'query': query})
+    return render(request, 'core/search.html', {'products': products, 'query': query, 'page_obj': page_obj})
 
 
 CONSENT_COOKIE_NAME = "cookie_consent"
