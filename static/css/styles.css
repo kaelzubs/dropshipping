@@ -181,6 +181,10 @@ body {
   margin-top: 60px;
 }
 
+.mainImage {
+  margin-top: 50px;
+}
+
 /* Make table text slightly smaller and cleaner */
 .table-sm td, 
 .table-sm th {
