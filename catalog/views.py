@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 
 
 def product_list(request):
-    products = Product.objects.filter(is_active=True)
+    products = Product.objects.filter(is_active=True).order_by('-id')
     categories = Category.objects.all()
     
     # products = Product.objects.all().order_by('-id')   # or any ordering you prefer
