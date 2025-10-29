@@ -1,7 +1,37 @@
+/* Lock the page from horizontal scrolling */
 html, body {
-  height: 100vh;
-  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
+
+/* Optional: ensure elements don't force overflow */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Common culprits: images and tables */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* avoids stray inline gaps that can push width */
+}
+
+.table-responsive {
+  overflow-x: auto;      /* allow tables to scroll inside their container */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Utility to clamp any wide container */
+.container,
+.container-fluid {
+  max-width: 100%;
+}
+
+/* If using carousels or galleries */
+.more-images {
+  max-width: 100%;
+}
+
 .footer {
     position: relative;
     margin-top: 155px;
@@ -161,7 +191,7 @@ body {
 }
 
 .mainImageDiv {
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 /* Make table text slightly smaller and cleaner */
