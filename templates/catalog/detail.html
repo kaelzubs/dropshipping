@@ -2,10 +2,10 @@
 {% load humanize %}
 {% block title %}{{ product.title }}{% endblock %}
 {% block content %}
-<div class="row">
+<div class="row divMT">
   <div class="col-md-6">
     {% if product.image %}
-    <img id="mainImage" src="{{ product.image.url }}" class="img-fluid cursor-pointer imageMT" data-bs-toggle="modal" data-bs-target="#imageModal" alt="{{ product.title }}">
+    <img id="mainImage" src="{{ product.image.url }}" class="img-fluid cursor-pointer" data-bs-toggle="modal" data-bs-target="#imageModal" alt="{{ product.title }}">
     {% endif %}
     {% if product.images.all %}
     <div class="row mt-4">
