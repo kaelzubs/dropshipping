@@ -21,7 +21,6 @@ html, body {
 }
 
 main, .content, .container {
-  padding-top: 0;
   margin-bottom: 0;
   padding-bottom: 0;
 }
@@ -55,7 +54,7 @@ body {
 /* Optional: tweak for smaller screens */
 @media (max-width: 576px) {
   body {
-    padding-top: 60px; /* mobile navs are usually taller */
+    padding-top: 30px; /* mobile navs are usually taller */
   }
 }
 
