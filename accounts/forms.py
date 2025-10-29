@@ -8,14 +8,12 @@ class CustomUserCreationForm(UserCreationForm):
         label="Password",
         widget=forms.PasswordInput(attrs={
             "class": "form-control",
-            "placeholder": "Enter your password"
         })
     )
     password2 = forms.CharField(
         label="Confirm Password",
         widget=forms.PasswordInput(attrs={
             "class": "form-control",
-            "placeholder": "Confirm password"
         })
     )
 
@@ -25,11 +23,9 @@ class CustomUserCreationForm(UserCreationForm):
         widgets = {
             "username": forms.TextInput(attrs={
                 "class": "form-control",
-                "placeholder": "Enter your username"
             }),
             "email": forms.EmailInput(attrs={
                 "class": "form-control",
-                "placeholder": "Enter your username or email"
             }),
         }
         
@@ -38,13 +34,11 @@ class LoginForm(forms.Form):
         label="Username or Email",
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "Enter your username or email"
         })
     )
     password = forms.CharField(
         label="Password",
         widget=forms.PasswordInput(attrs={
             "class": "form-control",
-            "placeholder": "Enter your password"
         }
     ))
