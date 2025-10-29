@@ -24,7 +24,7 @@ def search_product(request):
         ).filter(
             Q(title__icontains=query) | Q(description__icontains=query)
         ).distinct()
-    
+    products = Product.objects.filter(is_active=True).order_by('-id')
     paginator = Paginator(products, 4)  # 12 products per page
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
