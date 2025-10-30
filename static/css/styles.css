@@ -31,9 +31,14 @@ main, .content, .container {
 main {
   flex: 1;   /* pushes footer down */
   padding-top: 70px;   /* same as footer margin */
-  padding-bottom: 70px; /* matches top spacing */
-
 }
+/* Optional: tweak for smaller screens where navbar is taller */
+@media (max-width: 576px) {
+  main {
+    padding-top: 90px;
+  }
+}
+
 
 
 .footer {
@@ -57,12 +62,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-/* Optional: tweak for smaller screens */
-/* @media (max-width: 576px) {
-  body {
-    padding-top: 30px; /* mobile navs are usually taller */
-  /* }
-} */ 
 
 
 /* Navbar */
