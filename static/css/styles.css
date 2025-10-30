@@ -199,6 +199,38 @@ main {
   }
 }
 
+/* General table styling */
+.table {
+  font-size: 0.95rem;
+  border-collapse: separate;   /* allows spacing control */
+  border-spacing: 0;           /* reset default spacing */
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+/* Add more space inside header and cells */
+.table th, 
+.table td {
+  padding: 1rem 1.25rem;       /* increase padding */
+  vertical-align: middle;
+  word-wrap: break-word;       /* wrap long titles */
+  white-space: normal;         /* allow multi-line */
+}
+
+/* Header styling */
+.table thead th {
+  background-color: #343a40;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+}
+
+/* Optional: zebra striping */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
 /* Make table text slightly smaller and cleaner */
 .table-sm td, 
 .table-sm th {
