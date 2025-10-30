@@ -199,10 +199,6 @@ main {
   }
 }
 
-.table {
-  overflow-x: auto;
-}
-
 /* Make table text slightly smaller and cleaner */
 .table-sm td, 
 .table-sm th {
