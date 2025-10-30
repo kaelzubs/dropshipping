@@ -30,12 +30,12 @@ main, .content, .container {
 
 main {
   flex: 1;   /* pushes footer down */
-  margin-top: -5px;
+  margin-top: -20px;
 }
 /* Optional: tweak for smaller screens where navbar is taller */
 @media (max-width: 576px) {
   main {
-    margin-top: -5px;
+    margin-top: -20px;
   }
 }
 
