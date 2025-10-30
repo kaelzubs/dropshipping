@@ -201,31 +201,32 @@ main {
   }
 }
 
-/* Make table text slightly smaller and cleaner */
-.table-sm td, 
-.table-sm th {
-  font-size: 0.9rem;
+/* Professional table tweaks */
+.table {
+  font-size: 0.95rem;
+  border-radius: 6px;
+  overflow: hidden; /* round corners */
+}
+
+.table thead th {
+  background-color: #343a40; /* dark header */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+.table td, .table th {
   vertical-align: middle;
+  padding: 0.75rem 1rem;
 }
 
-/* Align numbers neatly */
-.table td.text-right, 
-.table th.text-right {
-  text-align: right;
-}
-
-.table td.text-center, 
-.table th.text-center {
-  text-align: center;
-}
-
-/* Improve spacing on mobile */
-@media (max-width: 576px) {
-  .table-sm td, 
-  .table-sm th {
-    font-size: 0.85rem;
-    padding: 0.4rem;
-  }
+.badge {
+  font-size: 0.85rem;
+  padding: 0.4em 0.6em;
 }
 
 /* Base title styling */
