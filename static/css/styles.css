@@ -30,7 +30,7 @@ main, .content, .container {
 
 main {
   flex: 1;   /* pushes footer down */
-  margin-top: 0;
+  margin-top: 10;
 }
 /* Optional: tweak for smaller screens where navbar is taller */
 @media (max-width: 576px) {
@@ -56,7 +56,7 @@ body {
   background-color: #f8f9fa;
   color: #333;
   margin: 0;
-  padding-top: 35px; /* adjust based on your navbar height */
+  padding-top: 30px; /* adjust based on your navbar height */
   display: flex;
   flex-direction: column;
 }
