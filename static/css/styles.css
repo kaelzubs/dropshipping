@@ -44,7 +44,7 @@ body {
 
 main {
   flex: 1;   /* pushes footer down */
-  padding-top: 30px;
+  padding-top: 25px;
 }
 /* Optional: tweak for smaller screens where navbar is taller */
 @media (max-width: 576px) {
