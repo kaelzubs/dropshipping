@@ -156,7 +156,7 @@ main {
   flex-wrap: nowrap;              /* space between images */
   padding-left: 15px;     /* match Bootstrap container padding */
   padding-right: 15px;    /* add equal padding on the right */
-  justify-content: left;
+  justify-content: center;
   align-items: left;
   /* overflow: hidden; */
   margin-top: 15px;
