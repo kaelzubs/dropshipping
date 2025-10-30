@@ -69,6 +69,7 @@ main {
   padding: 0.5rem 1rem;
 }
 
+/* Counter styling for cart item */
 .navbar .badge {
   font-size: 0.75rem;
   vertical-align: top;

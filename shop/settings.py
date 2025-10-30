@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os, json
 from dotenv import load_dotenv
 import warnings
 from datetime import timedelta
@@ -39,7 +39,7 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 # Allow all hosts in development, restrict in production
 # DEBUG = os.getenv('DEBUG')
-DEBUG=False
+DEBUG=True
 if DEBUG == True:
     ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
@@ -86,8 +86,8 @@ REST_FRAMEWORK = {
 #         response = self.get_response(request)
 
 #         # Example: if you set any marketing cookies server-side, clear them if not consented
-#         # if not consent.get("marketing"):
-#         #     response.delete_cookie("marketing_cookie_name")
+#         if not consent.get("marketing"):
+#             response.delete_cookie("marketing_cookie_name")
 
 #         return response
 
@@ -100,7 +100,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # "shop.core.settings.middleware.CookieConsentMiddleware",
+    # "shop.settings.middleware.CookieConsentMiddleware",
 
 ]
 
@@ -119,7 +119,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'orders.context_processors.cart_item_count'
             ],
         },
     },

@@ -10,6 +10,7 @@ from django.conf import settings
 from pathlib import Path
 from dotenv import load_dotenv
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -17,11 +18,6 @@ load_dotenv(BASE_DIR / '.env')
 
 # stripe.api_key =  'STRIPE_API_KEY'  # env var in production
 stripe.api_key = os.getenv('STRIPE_API_KEY')
-
-def cart_item_count(request):
-    cart = request.session.get('cart', {})
-    count = sum(item['quantity'] for item in cart.values()) if cart else 0
-    return {'cart_item_count': count}
 
 def cart_detail(request):
     cart = Cart(request)
