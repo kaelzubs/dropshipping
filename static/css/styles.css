@@ -154,7 +154,7 @@ main {
 .more-images {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;              /* space between images */
+  gap: 2px;              /* space between images */
   padding-left: 15px;     /* match Bootstrap container padding */
   padding-right: 15px;    /* add equal padding on the right */
   justify-content: flex-start;
