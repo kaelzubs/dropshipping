@@ -58,11 +58,11 @@ body {
   flex-direction: column;
 }
 /* Optional: tweak for smaller screens */
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
   body {
     padding-top: 30px; /* mobile navs are usually taller */
-  }
-}
+  /* }
+} */ 
 
 
 /* Navbar */
