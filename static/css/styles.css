@@ -18,12 +18,10 @@ html, body {
   max-width: 100%;
 }
 
-/* 
 main, .content, .container {
   margin-bottom: 0;
   padding-bottom: 0;
-} */
-
+}
 
 .card-title { font-weight: 600; }
 .navbar-brand { font-weight: 700; }
@@ -201,32 +199,31 @@ main {
   }
 }
 
-/* Professional table tweaks */
-.table {
-  font-size: 0.95rem;
-  border-radius: 6px;
-  overflow: hidden; /* round corners */
-}
-
-.table thead th {
-  background-color: #343a40; /* dark header */
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.table-hover tbody tr:hover {
-  background-color: #f1f3f5;
-}
-
-.table td, .table th {
+/* Make table text slightly smaller and cleaner */
+.table-sm td, 
+.table-sm th {
+  font-size: 0.9rem;
   vertical-align: middle;
-  padding: 0.75rem 1rem;
 }
 
-.badge {
-  font-size: 0.85rem;
-  padding: 0.4em 0.6em;
+/* Align numbers neatly */
+.table td.text-right, 
+.table th.text-right {
+  text-align: right;
+}
+
+.table td.text-center, 
+.table th.text-center {
+  text-align: center;
+}
+
+/* Improve spacing on mobile */
+@media (max-width: 576px) {
+  .table-sm td, 
+  .table-sm th {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+  }
 }
 
 /* Base title styling */
