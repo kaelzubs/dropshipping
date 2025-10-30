@@ -209,13 +209,18 @@ main {
 /* Align numbers neatly */
 .table td.text-right, 
 .table th.text-right {
-  text-align: left;
+  text-align: right;
 }
 
 .table td.text-center, 
 .table th.text-center {
   text-align: center;
 }
+
+.table th {
+  text-align: left !important;
+}
+
 
 /* Improve spacing on mobile */
 @media (max-width: 576px) {
