@@ -150,23 +150,27 @@ main {
   }
 }
 
-/* Default styling for More Images */
+/* Container for more images */
 .more-images {
   display: flex;
-  flex-wrap: nowrap;    /*    desktop/tablet: wrap into multiple rows if needed */
-  gap: 10px;
-  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 10px;              /* space between images */
+  padding-left: 15px;     /* match Bootstrap container padding */
+  padding-right: 15px;    /* add equal padding on the right */
+  justify-content: flex-start;
+  /* overflow: hidden; */
   margin-top: 15px;
 }
 
-/* Thumbnails */
+/* Each thumbnail */
 .more-images img {
-  max-width: 100px;
-  height: auto;
-  border: 1px solid #ddd;
+  width: 80px;            /* or any fixed size */
+  height: 80px;
+  object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  border: 1px solid #ddd;
 }
 
 .more-images img:hover {
