@@ -39,8 +39,6 @@ main {
   }
 }
 
-
-
 .footer {
     position: relative;
     /* margin-top: 155px; */
@@ -58,7 +56,7 @@ body {
   background-color: #f8f9fa;
   color: #333;
   margin: 0;
-  padding-top: 70px; /* adjust based on your navbar height */
+  padding-top: 30px; /* adjust based on your navbar height */
   display: flex;
   flex-direction: column;
 }

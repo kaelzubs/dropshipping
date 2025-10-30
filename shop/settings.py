@@ -35,7 +35,7 @@ if not SECRET_KEY:
         'DJANGO_SECRET_KEY not found in .env — using unsafe default (development only)',
         UserWarning,
     )
-
+    
 # SECURITY WARNING: don't run with debug turned on in production!
 # Allow all hosts in development, restrict in production
 # DEBUG = os.getenv('DEBUG')
