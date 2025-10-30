@@ -169,7 +169,8 @@ main {
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: 1px solid blue;
+  border: 2px solid #007bff;
+  padding: 5px;
 }
 
 .more-images img:hover {
