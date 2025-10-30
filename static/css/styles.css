@@ -200,7 +200,7 @@ main {
 }
 
 .table {
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 /* Make table text slightly smaller and cleaner */
