@@ -1,7 +1,7 @@
 /* Lock the page from horizontal scrolling */
 html, body {
   width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -199,6 +199,9 @@ main {
   }
 }
 
+.table {
+  overflow-x: scroll;
+}
 
 /* Make table text slightly smaller and cleaner */
 .table-sm td, 
