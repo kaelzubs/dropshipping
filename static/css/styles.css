@@ -156,7 +156,7 @@ main {
   flex-wrap: nowrap;              /* space between images */
   padding-left: 15px;     /* match Bootstrap container padding */
   padding-right: 15px;    /* add equal padding on the right */
-  justify-content: left;
+  justify-content: center;
   /* overflow: hidden; */
   margin-top: 15px;
 }
@@ -169,13 +169,14 @@ main {
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: 1px solid #007bff;
-  gap: 5px;
+  border: 1px solid #013770;
+  justify-content: left;
+  align-items: left;
 }
 
 .more-images img:hover {
   transform: scale(1.05);
-  border-color: #004186;
+  border-color: #007bff;
 }
 
 /* Force horizontal row on mobile */
