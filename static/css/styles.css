@@ -30,12 +30,12 @@ main, .content, .container {
 
 main {
   flex: 1;   /* pushes footer down */
-  padding-top: 70px;   /* same as footer margin */
+  padding-top: 40px;   /* same as footer margin */
 }
 /* Optional: tweak for smaller screens where navbar is taller */
 @media (max-width: 576px) {
   main {
-    padding-top: 90px;
+    padding-top: 50px;
   }
 }
 
