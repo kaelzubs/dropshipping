@@ -35,7 +35,14 @@
         <li class="nav-item"><a class="nav-link text-white" href="{% url 'suppliers:about_us' %}">About</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="{% url 'accounts:contact' %}">Contact</a></li>
         {% if user.is_authenticated %}
-          <li class="nav-item"><a class="nav-link text-white" href="{% url 'orders:cart_detail' %}">Cart</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'orders:cart_detail' %}">
+              Cart
+              {% if cart_item_count > 0 %}
+                <span class="badge badge-pill badge-primary">{{ cart_item_count }}</span>
+              {% endif %}
+            </a>
+          </li>
           <li class="nav-item"><a class="nav-link text-white" href="{% url 'accounts:logout' %}">Welcome {{ user.username }}, Logout?</a></li>
         {% else %}
           <li class="nav-item"><a class="nav-link text-white" href="{% url 'orders:cart_detail' %}">Cart</a></li>
