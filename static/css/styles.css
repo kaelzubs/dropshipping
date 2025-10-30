@@ -228,11 +228,6 @@ main {
   }
 }
 
-.table-responsive {
-  overflow-x: auto;      /* allow tables to scroll inside their container */
-  -webkit-overflow-scrolling: touch;
-}
-
 /* Base title styling */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Arial, sans-serif;
