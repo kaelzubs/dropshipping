@@ -226,6 +226,76 @@ main {
   }
 }
 
+/* Make the table fill its container and improve readability */
+.cart-table {
+  width: 100%;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 0.9rem 1rem;
+  vertical-align: middle;
+}
+
+/* Control specific column widths to keep layout stable */
+.cart-table th:nth-child(1),
+.cart-table td:nth-child(1) { /* Product */
+  min-width: 240px;
+}
+
+.cart-table th:nth-child(2),
+.cart-table td:nth-child(2) { /* Image */
+  width: 100px;
+}
+
+.cart-table th:nth-child(3),
+.cart-table td:nth-child(3) { /* Unit price */
+  width: 140px;
+}
+
+.cart-table th:nth-child(4),
+.cart-table td:nth-child(4) { /* Qty */
+  width: 120px;
+}
+
+.cart-table th:nth-child(5),
+.cart-table td:nth-child(5) { /* Subtotal */
+  width: 160px;
+}
+
+.cart-table th:nth-child(6),
+.cart-table td:nth-child(6) { /* Actions */
+  width: 150px;
+}
+
+/* Thumbnail styling */
+.cart-thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Compact quantity input */
+.qty-input {
+  max-width: 80px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Optional: subtle hover */
+.table-hover tbody tr:hover {
+  background-color: #f5f7fa;
+}
+
+/* On small screens, allow horizontal scroll */
+.table-responsive {
+  overflow-x: auto;
+}
+
 /* Base title styling */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Arial, sans-serif;
