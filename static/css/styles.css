@@ -153,11 +153,10 @@ main {
 /* Container for more images */
 .more-images {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2px;              /* space between images */
+  flex-wrap: wrap;              /* space between images */
   padding-left: 15px;     /* match Bootstrap container padding */
   padding-right: 15px;    /* add equal padding on the right */
-  justify-content: flex-start;
+  justify-content: center;
   /* overflow: hidden; */
   margin-top: 15px;
 }
