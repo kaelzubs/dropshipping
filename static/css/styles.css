@@ -153,7 +153,7 @@ main {
 /* Container for more images */
 .more-images {
   display: flex;
-  flex-wrap: wrap;              /* space between images */
+  flex-wrap: nowrap;              /* space between images */
   padding-left: 15px;     /* match Bootstrap container padding */
   padding-right: 15px;    /* add equal padding on the right */
   justify-content: center;
@@ -169,7 +169,7 @@ main {
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: 1px solid #ddd;
+  border: 1px solid blue;
 }
 
 .more-images img:hover {
