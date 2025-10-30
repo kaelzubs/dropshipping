@@ -209,7 +209,7 @@ main {
 /* Align numbers neatly */
 .table td.text-right, 
 .table th.text-right {
-  text-align: right;
+  text-align: left;
 }
 
 .table td.text-center, 
