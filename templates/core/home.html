@@ -22,9 +22,4 @@
     </div>
   {% endfor %}
 </div>
-{% if not request.has_cookie_consent %}
-<div class="cookie-banner">
-  This site uses cookies. <a href="{% url 'core:accept_cookies' %}">Accept</a>
-</div>
-{% endif %}
 {% endblock %}
