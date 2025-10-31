@@ -244,10 +244,10 @@ def contact(request):
 
         try:
             send_mail(
-            subject,
-            full_message,
-            "support@yourstore.com",  # from
-            ["support@yourstore.com"],  # to
+                subject,
+                full_message,
+                "support@yourstore.com",  # from
+                ["support@yourstore.com"],  # to
             )
             return render(request, "accounts/contact_success.html", {"name": request.POST.get("name")})
         except ValidationError:
