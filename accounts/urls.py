@@ -13,10 +13,10 @@ urlpatterns = [
     path('verify/', verify_email, name="verify_email"),
     path('login/', jwt_login, name='login'),
     path('logout/', logout_template, name='logout'),
-    path('contact/', contact, name='contact'),
     path('password-reset/', password_reset_request, name='password_reset'),
     path('reset/<uidb64>/<token>/', password_reset_confirm, name='password_reset_confirm'),
     path("newsletter/subscribe/", newsletter_subscribe, name="newsletter_subscribe"),
     path("newsletter/failed/", mailchimp_failed, name="mailchimp_failed"),
     path("newsletter/confirmed/", mailchimp_confirm, name="mailchimp_confirm"),
+    path('contact', contact, name='contact'),
 ]
