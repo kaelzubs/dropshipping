@@ -15,7 +15,7 @@ import os, json
 from dotenv import load_dotenv
 import warnings
 from datetime import timedelta
-
+    
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -72,25 +72,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-# class CookieConsentMiddleware:
-#     def __init__(self, get_response):
-#         self.get_response = get_response
-
-#     def __call__(self, request):
-#         raw = request.COOKIES.get("cookie_consent")
-#         consent = {}
-#         if raw:
-#             try: consent = json.loads(raw)
-#             except Exception: consent = {}
-#         request.cookie_consent = consent
-#         response = self.get_response(request)
-
-#         # Example: if you set any marketing cookies server-side, clear them if not consented
-#         if not consent.get("marketing"):
-#             response.delete_cookie("marketing_cookie_name")
-
-#         return response
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -100,7 +81,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # "shop.settings.middleware.CookieConsentMiddleware",
+    'shop.middleware.CookieConsentMiddleware'
 
 ]
 
@@ -198,6 +179,7 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Use SMTP in production
 # Stripe settings
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
