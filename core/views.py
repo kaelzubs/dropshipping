@@ -12,10 +12,6 @@ def home(request):
     products = Product.objects.filter(is_active=True)[:8]
     return render(request, 'core/home.html', {'products': products})
 
-def accept_cookies(request):
-    response = HttpResponseRedirect("/")
-    response.set_cookie("cookie_consent", "yes", max_age=31536000)  # 1 year
-    return response
 
 def cookie_settings(request):
     """

@@ -16,6 +16,8 @@ from .utils.mailchimp import subscribe_user
 from rest_framework_simplejwt.tokens import AccessToken
 from .forms import CustomUserCreationForm, LoginForm
 from django.conf import settings
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 
 
 User = get_user_model()
@@ -247,6 +249,25 @@ def mailchimp_confirm(request):
 def mailchimp_failed(request):
     return render(request, "accounts/mailchimp_failed.html")
 
+# def contact(request):
+#     if request.method == "POST":
+#         name = request.POST.get("name")
+#         email = request.POST.get("email")
+#         subject = request.POST.get("subject")
+#         message = request.POST.get("message")
+
+#         full_message = f"From: {name} <{email}>\n\n{message}"
+
+#         send_mail(
+#             subject,
+#             full_message,
+#             "support@yourstore.com",  # from
+#             ["support@yourstore.com"],  # to
+#         )
+#         return render(request, "accounts/contact_success.html", {"name": request.POST.get("name")})
+
+#     return render(request, "accounts/contact.html")
+
 def contact(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -254,14 +275,24 @@ def contact(request):
         subject = request.POST.get("subject")
         message = request.POST.get("message")
 
+        # Validate email
+        try:
+            validate_email(email)
+        except ValidationError:
+            return render(request, "accounts/contact.html", {"error": "Invalid email address."})
+
         full_message = f"From: {name} <{email}>\n\n{message}"
 
-        send_mail(
-            subject,
-            full_message,
-            "support@yourstore.com",  # from
-            ["support@yourstore.com"],  # to
-        )
-        return render(request, "accounts/contact_success.html", {"name": request.POST.get("name")})
+        try:
+            send_mail(
+                subject,
+                full_message,
+                "support@yourstore.com",
+                ["support@yourstore.com"],
+                headers={"Reply-To": email},
+            )
+            return render(request, "accounts/contact_success.html", {"name": name})
+        except Exception:
+            return render(request, "accounts/contact.html", {"error": "Message could not be sent. Please try again."})
 
     return render(request, "accounts/contact.html")
