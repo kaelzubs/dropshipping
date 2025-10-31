@@ -19,7 +19,7 @@
             {% endfor %}
           {% endif %}
           <!-- Contact Form -->
-          <form method="post" action="{% url 'accounts:contact' %}">
+          <form method="POST" action="{% url 'accounts:contact' %}">
             {% csrf_token %}
             <div class="form-group">
               <label for="name">Your Name</label>
