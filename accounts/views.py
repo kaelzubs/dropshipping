@@ -190,14 +190,6 @@ def password_reset_confirm(request, uidb64, token):
     if not token_generator.check_token(user, token):
         return render(request, "accounts/password_reset_invalid.html")
 
-    # if request.method == "POST":
-    #     new_password = request.POST.get("new_password")
-    #     user.set_password(new_password)
-    #     user.save()
-    #     # 👇 Redirect straight to JWT login page
-    #     messages.success(request, "Password reset successful. Please log in with your new password.")
-    #     return redirect(reverse("token_obtain_pair")) # or your login URL name
-
     if request.method == "POST":
         new_password = request.POST.get("new_password")
         user.set_password(new_password)
@@ -210,14 +202,6 @@ def newsletter_subscribe(request):
     if request.method == "POST":
         email = request.POST.get("email")
         result = subscribe_user(email)
-        
-        # if result.get("success"):
-        #     return redirect("mailchimp_confirm")
-        # reason = result.get("reason", "other")
-        # return render(request, "accounts/mailchimp_failed.html", {
-        #     "reason": reason,
-        #     "email": email,
-        # })
 
         if result['success']:
            return redirect("accounts:mailchimp_confirm")

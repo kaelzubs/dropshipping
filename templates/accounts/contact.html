@@ -7,6 +7,17 @@
       <div class="card shadow">
         <div class="card-body">
           <h3 class="card-title mb-4 text-center">Contact Us</h3>
+          {% if messages %}
+            {% for message in messages %}
+              {% if message.tags == "error" %}
+                <div class="alert alert-danger">
+                  {{ message }}
+                </div>
+              {% else %}
+                  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
           <!-- Contact Form -->
           <form method="post" action="{% url 'accounts:contact' %}">
             {% csrf_token %}
