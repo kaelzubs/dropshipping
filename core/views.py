@@ -25,7 +25,7 @@ def cookie_settings(request):
             "timestamp": datetime.utcnow().isoformat() + "Z",
             "version": 1,
         }
-        response = redirect("cookie_settings")
+        response = redirect("core:cookie_settings")
         response.set_cookie(
             CONSENT_COOKIE_NAME,
             json.dumps(data),
