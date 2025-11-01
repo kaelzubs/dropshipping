@@ -124,32 +124,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- Font Awesome for icons -->
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-  <!-- In base.html, after including cookie_banner.html -->
-  <script>
-    function loadAnalytics() {
-      // Example: Google Analytics gtag
-      var s = document.createElement("script");
-      s.async = true;
-      s.src = "https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID";
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID', { anonymize_ip: true });
-    }
-
-    function loadMarketing() {
-      // Example placeholder for marketing pixel. Only load if consent.marketing === true.
-    }
-
-    // If consent cookie already exists, fire immediately; else banner will dispatch after user choice
-    window.addEventListener("cookie-consent-ready", function(e) {
-      var consent = e.detail || {};
-      if (consent.analytics) loadAnalytics();
-      if (consent.marketing) loadMarketing();
-    });
-  </script>
+  <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

@@ -30,6 +30,7 @@ def cart_add(request, product_id):
         cart.add(product_id, qty)
     return redirect('orders:cart_detail')
 
+
 def cart_remove(request, product_id):
     cart = Cart(request)
     cart.remove(product_id)
