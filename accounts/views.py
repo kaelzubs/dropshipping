@@ -14,7 +14,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from rest_framework_simplejwt.tokens import RefreshToken
 from .utils.mailchimp import subscribe_user
 from rest_framework_simplejwt.tokens import AccessToken
-from .forms import CustomUserCreationForm, LoginForm
+from .forms import CustomUserCreationForm, LoginForm, ContactForm
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
@@ -235,25 +235,49 @@ def mailchimp_failed(request):
 
 def contact(request):
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        subject = request.POST.get("subject")
-        message = request.POST.get("message")
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            subject = form.cleaned_data["subject"]
+            message = form.cleaned_data["message"]
 
-        full_message = f"From: {name} <{email}>\n\n{message}"
+            full_message = f"From: {name} <{email}>\n\n{message}"
 
-        try:
             send_mail(
                 subject,
                 full_message,
-                "support@yourstore.com",  # from
-                ["support@yourstore.com"],  # to
+                settings.EMAIL_HOST_USER,   # from
+                [settings.EMAIL_HOST_USER], # to
+                fail_silently=False,
             )
-            return render(request, "accounts/contact_success.html", {"name": request.POST.get("name")})
-        except ValidationError:
-            return render(request, "accounts/contact.html", {"error": "Invalid email address."})
+            return render(request, "accounts/contact_success.html", {"name": name})
+    else:
+        form = ContactForm()
+    return render(request, "accounts/contact.html", {"form": form})
 
-    return render(request, "accounts/contact.html")
+
+# def contact(request):
+#     if request.method == "POST":
+#         name = request.POST.get("name")
+#         email = request.POST.get("email")
+#         subject = request.POST.get("subject")
+#         message = request.POST.get("message")
+
+#         full_message = f"From: {name} <{email}>\n\n{message}"
+
+#         try:
+#             send_mail(
+#                 subject,
+#                 full_message,
+#                 "support@yourstore.com",  # from
+#                 ["support@yourstore.com"],  # to
+#             )
+#             return render(request, "accounts/contact_success.html", {"name": request.POST.get("name")})
+#         except ValidationError:
+#             return render(request, "accounts/contact.html", {"error": "Invalid email address."})
+
+#     return render(request, "accounts/contact.html")
 
 # def contact(request):
 #     if request.method == "POST":
