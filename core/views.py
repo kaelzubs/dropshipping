@@ -3,7 +3,7 @@ from catalog.models import Product
 import json
 from datetime import datetime
 from django.core.exceptions import PermissionDenied
-from django.http import HttpResponseRedirect
+
 
 CONSENT_COOKIE_NAME = "cookie_consent"
 CONSENT_MAX_AGE = 365 * 24 * 60 * 60  # one year

@@ -1,20 +1,21 @@
 from decimal import Decimal
 from catalog.models import Product
 
-class Cart:
+class Cart: 
     def __init__(self, request):
         self.session = request.session
-        cart = self.session.get('cart')
+        cart = self.session.get("cart")
         if not cart:
-            cart = self.session['cart'] = {}
+            cart = self.session["cart"] = {}
         self.cart = cart
-
+        
     def add(self, product_id, quantity=1):
         product = Product.objects.get(id=product_id)
         item = self.cart.get(str(product_id), {'quantity': 0, 'price': str(product.price), 'title': product.title})
         item['quantity'] += quantity
         self.cart[str(product_id)] = item
         self.save()
+
 
     def remove(self, product_id):
         self.cart.pop(str(product_id), None)
@@ -26,6 +27,7 @@ class Cart:
 
     def save(self):
         self.session.modified = True
+
 
     def items(self):
         product_ids = [int(pid) for pid in self.cart.keys()]
