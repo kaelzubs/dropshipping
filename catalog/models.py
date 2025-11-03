@@ -4,6 +4,7 @@ from django.utils.text import slugify
 class Category(models.Model):
     name = models.CharField(max_length=120, unique=True)
     slug = models.SlugField(max_length=140, unique=True, blank=True)
+    image = models.ImageField(upload_to="category_images/", blank=True)
     
     class Meta:
         verbose_name_plural = "categories"
@@ -13,6 +14,13 @@ class Category(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self): return self.name
+    
+class CategoryImage(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to="category_images/")
+
+    def __str__(self):
+        return f"Image for {self.category.name}"
 
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products')

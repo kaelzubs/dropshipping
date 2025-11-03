@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Product, Category, ProductImage
+from .models import Product, Category, ProductImage, CategoryImage
+
+class CategoryImageInline(admin.TabularInline):  # or admin.StackedInline
+    model = CategoryImage
+    extra = 1   # how many empty forms to display by default
 
 class ProductImageInline(admin.TabularInline):  # or admin.StackedInline
     model = ProductImage
@@ -18,3 +22,4 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
+    inlines = [CategoryImageInline]

@@ -2,20 +2,44 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, get_object_or_404
-from .models import Category, Product
+
+def category_list(request, category_slug=None):
+    category = None
+    products = Product.objects.all()
+    categories = Category.objects.all()
+    
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category, is_active=True).order_by('-id')
+        
+    # products = Product.objects.all().order_by('-id')   # or any ordering you prefer
+    paginator = Paginator(products, 4)  # 12 products per page
+    page_number = request.GET.get("page")
+    try:
+        page_obj = paginator.get_page(page_number)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        page_obj = paginator.page(paginator.num_pages)
+        
+    return render(request, 'catalog/category_list.html', {
+        'products': products,
+        'categories': categories,
+        'category': category,
+        'page_obj': page_obj
+    })
 
 
 def product_list(request, category_slug=None):
     category = None
-    categories = Category.objects.all()
     products = Product.objects.all()
+    categories = Category.objects.all()
     
-    # Filter by category if slug is provided
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        products = Product.objects.filter(is_active=True).order_by('-id')
+        products = products.filter(category=category, is_active=True).order_by('-id')
     
     # products = Product.objects.all().order_by('-id')   # or any ordering you prefer
     paginator = Paginator(products, 4)  # 12 products per page
@@ -29,13 +53,7 @@ def product_list(request, category_slug=None):
         # If page is out of range (e.g. 9999), deliver last page of results.
         page_obj = paginator.page(paginator.num_pages)
 
-    return render(request, 'catalog/list.html', {
-        'category': category,
-        'products': products,
-        'categories': categories,
-        'page_obj': page_obj,
-        'page_number': page_number
-    })
+    return render(request, 'catalog/list.html', {'products': products, 'categories': categories, 'page_obj': page_obj, 'category': category})
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, is_active=True)

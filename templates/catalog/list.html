@@ -1,75 +1,27 @@
 {% extends 'base.html' %}
 {% load humanize %}
-{% block title %}Products{% endblock %}
+{% block title %}Categories{% endblock %}
 {% block content %}
 <div class="row mb-3">
-  <div class="col">
-    <h3 class='mb-5'>{% if category %}{{ category.name }}{% else %}All Products{% endif %}</h3>
+  <!-- Sidebar with categories -->
+   <h3 class='px-3'>Categories:</h3>
+  <div class="category-grid mb-4 category-list">
+    {% for c in categories %}
+    <div class="category-item pt-3 px-2">
+      <a href="{% url 'catalog:category_list_by_category' c.slug %}">
+        <div class="image-grid">
+          {% if c.images.all %}
+            {% for p in c.images.all %}
+            <img src="{{ p.image.url }}" alt="{{ c.name }}" class="grid-img" loading="lazy">
+            {% endfor %}
+          {% else %}
+            <div class="grid-img item-placeholder">No image</div>
+          {% endif %}
+        </div>
+        <div class="item-label">{{ c.name }}</div>
+      </a>
+    </div>
+    {% endfor %}
   </div>
 </div>
-<div class="row">
-  {% for product in page_obj %}
-    <div class="col-md-3 mb-4">
-      <div class="card h-100">
-        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.title }}</h5>
-          <p class="card-text">₦{{ product.price|floatformat:2|intcomma }}</p>
-          <a href="{% url 'catalog:detail' product.slug %}" class="btn btn-sm btn-primary">View</a>
-        </div>
-      </div>
-    </div>
-  {% empty %}
-    <div class="col-12 text-center text-muted">
-      <p>No products available.</p>
-    </div>
-  {% endfor %}
-</div>
-
-{% if page_obj.has_other_pages %}
-<nav aria-label="Page navigation">
-  <ul class="pagination justify-content-center">
-
-    {# Previous button #}
-    {% if page_obj.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-    {% else %}
-      <li class="page-item disabled">
-        <span class="page-link">&laquo;</span>
-      </li>
-    {% endif %}
-
-    {# Page numbers #}
-    {% for num in page_obj.paginator.page_range %}
-      {% if page_obj.number == num %}
-        <li class="page-item active">
-          <span class="page-link">{{ num }}</span>
-        </li>
-      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-        <li class="page-item">
-          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-        </li>
-      {% endif %}
-    {% endfor %}
-
-    {# Next button #}
-    {% if page_obj.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    {% else %}
-      <li class="page-item disabled">
-        <span class="page-link">&raquo;</span>
-      </li>
-    {% endif %}
-
-  </ul>
-</nav>
-{% endif %}
 {% endblock %}
