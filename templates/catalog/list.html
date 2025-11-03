@@ -7,7 +7,7 @@
    <h3 class='px-3'>Categories:</h3>
   <div class="category-grid mb-4 category-list">
     {% for c in categories %}
-    <div class="category-item pt-3 px-2">
+    <div class="category-item pt-2 px-2">
       <a href="{% url 'catalog:category_list_by_category' c.slug %}">
         <div class="image-grid">
           {% if c.images.all %}
