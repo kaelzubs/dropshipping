@@ -39,3 +39,10 @@ window.addEventListener("cookie-consent-ready", function(e) {
     if (consent.analytics) loadAnalytics();
     if (consent.marketing) loadMarketing();
 });
+
+// // Example: Load analytics immediately if consent already given
+// var consent = getConsent();
+// if (consent) {
+//     if (consent.analytics) loadAnalytics();
+//     if (consent.marketing) loadMarketing();
+// }

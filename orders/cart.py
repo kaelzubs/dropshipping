@@ -16,7 +16,6 @@ class Cart:
         self.cart[str(product_id)] = item
         self.save()
 
-
     def remove(self, product_id):
         self.cart.pop(str(product_id), None)
         self.save()
@@ -25,10 +24,13 @@ class Cart:
         self.session['cart'] = {}
         self.save()
 
+    def __len__(self):
+        """Return total quantity of items in the cart"""
+        return sum(item["quantity"] for item in self.cart.values())
+    
     def save(self):
         self.session.modified = True
-
-
+ 
     def items(self):
         product_ids = [int(pid) for pid in self.cart.keys()]
         products = Product.objects.filter(id__in=product_ids)

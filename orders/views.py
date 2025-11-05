@@ -21,12 +21,19 @@ stripe.api_key = os.getenv('STRIPE_API_KEY')
 
 def cart_detail(request):
     cart = Cart(request)
-    return render(request, 'orders/cart.html', {'cart_items': list(cart.items()), 'totals': cart.totals()})
+    return render(request, 'orders/cart.html', {
+        'cart_items': list(cart.items()),
+        'totals': cart.totals(),
+        "cart_count": len(cart), # ✅ works if __len__ is defined in Cart
+        "cart": cart
+    })
 
 def cart_add(request, product_id):
     cart = Cart(request)
     if request.method == 'POST':
         qty = int(request.POST.get('quantity', 1))
+        # ✅ Fetch the actual product object
+        # ✅ Pass the product object, not just the ID
         cart.add(product_id, qty)
     return redirect('orders:cart_detail')
 
