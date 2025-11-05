@@ -81,7 +81,13 @@
           </li>
           <li class="nav-item"><a class="nav-link text-white" href="{% url 'accounts:logout' %}">Welcome {{ user.username }}, Logout?</a></li>
         {% else %}
-          <li class="nav-item"><a class="nav-link text-white" href="{% url 'orders:cart_detail' %}">Cart</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'orders:cart_detail' %}">
+              Cart<span id="cart-count" class="badge bg-danger top-0 start-100 translate-middle">
+                  {{ cart|length }}
+              </span>
+            </a>
+          </li>
           <li class="nav-item"><a class="nav-link text-white" href="{% url 'accounts:register' %}">Register</a></li>
           <li class="nav-item"><a class="nav-link text-white" href="{% url 'accounts:login' %}">Login</a></li>
         {% endif %}
