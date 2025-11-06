@@ -158,14 +158,14 @@ main {
 /* Container for more images */
 .more-images {
   display: flex;
-  flex-wrap: nowrap;              /* space between images */
   padding-left: 15px;     /* match Bootstrap container padding */
   padding-right: 15px;    /* add equal padding on the right */
   justify-content: center;
-  align-items: left;
-  /* overflow: hidden; */
-  margin-top: 15px;
-  padding: auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+  overflow-x: visible;
+  flex-wrap: wrap;
 }
 
 /* Each thumbnail */
@@ -176,12 +176,14 @@ main {
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: 3px solid #007bff;
+  border: 2px solid #007bff;
+  display: flex;
+  justify-content: left;
 }
 
 .more-images img:hover {
   transform: scale(1.05);
-  border-color: #001a36;
+  border-color: #dc3545;
 }
 
 /* Force horizontal row on mobile */
@@ -189,8 +191,9 @@ main {
   .more-images {
     display: flex;
     flex-wrap: nowrap;      /*      keep them in one line */
-    overflow: hidden;       /*    enable horizontal scroll */
+    overflow-x: auto;      /*    enable horizontal scroll */
     -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    overflow-x: visible;
   }
 
   .more-images img {
@@ -201,26 +204,19 @@ main {
 
 /* Tablet view */
 @media (max-width: 768px) {
+  .more-images {
+    justify-content: flex-start; /* align left on tablets */
+    display: flex;
+    flex-wrap: nowrap; /* Forces images onto a single line */
+    overflow-x: auto; /* Enables horizontal scrolling if content overflows */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
   .more-images img {
     max-width: 80px;   /* shrink thumbnails */
   }
 }
 
-/* .category-img {
-  width: 200px;       /* set desired width */
-  /* height: 200px;      set desired height */
-  /* object-fit: cover;  /* crop/scale image to fill box */
-  /* border-radius: 8px; /* optional: rounded corners */
-/* } */  
-/* 
-.category-img {
-  width: 100%;
-  aspect-ratio: 1 / 1; /* keeps it square */
-  /* object-fit: cover;
-}
- */
-
- .category-grid {
+.category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 12px;
@@ -258,7 +254,7 @@ main {
   flex-direction: column;
   text-decoration: none;
   border: 1px solid #e5e7eb;
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
   background: #fff;
 }

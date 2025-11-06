@@ -4,7 +4,6 @@ from django.utils.text import slugify
 class Category(models.Model):
     name = models.CharField(max_length=120, unique=True)
     slug = models.SlugField(max_length=140, unique=True, blank=True)
-    image = models.ImageField(upload_to="category_images/", blank=True)
     
     class Meta:
         verbose_name_plural = "categories"
@@ -36,7 +35,6 @@ class Product(models.Model):
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='products/', blank=True, null=True)
     
     class Meta:
         ordering = ["-created_at", "title"]

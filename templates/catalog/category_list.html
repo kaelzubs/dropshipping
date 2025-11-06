@@ -3,23 +3,27 @@
 {% block title %}Products{% endblock %}
 {% block content %}
 <div class="row mb-3">
-    <div class="col">
-        <h3>{% if category %}{{ category.name }}{% else %}All Products{% endif %}</h3>
-    </div>
-    {% for product in page_obj %}
-    <div class="col-md-3 mb-4">
-        <div class="card pt-2 px-2">
-            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.title }}">
+    <h3>{% if category %}{{ category.name }}{% else %}All Products{% endif %}</h3>
+    <div class="category-grid mb-4 category-list">
+        {% for product in page_obj %}
+        <div class="card shadow py-2 px-2 d-flex">
+            {% with first_image=product.images.all.0 %}
+                {% if first_image %}
+                    <img src="{{ first_image.image.url }}" class="card-img-top img-fluid" alt="{{ product.title }}">
+                {% else %}
+                    <div class="card-img-top img-fluid item-placeholder">No image</div>
+                {% endif %}
+            {% endwith %}
             <div class="card-body">
                 <h5 class="card-title">{{ product.title }}</h5>
                 <p class="card-text">₦{{ product.price|floatformat:2|intcomma }}</p>
                 <a href="{% url 'catalog:detail' product.slug %}" class="btn btn-sm btn-primary">View</a>
             </div>
         </div>
-    </div>
-    {% empty %}
-    <div class="col-12 text-center text-muted">
-        <p>No products available.</p>
+        {% empty %}
+        <div class="col-12 text-center text-muted">
+            <p>No products available.</p>
+        </div>
     </div>
     {% endfor %}
 

@@ -4,9 +4,15 @@
 {% block content %}
 <div class="row">
   <div class="col-md-6">
-    {% if product.image %}
-    <div class="category-item pt-3 px-2">
-      <img id="mainImage" src="{{ product.image.url }}" class="img-fluid cursor-pointer" data-bs-toggle="modal" data-bs-target="#imageModal" alt="{{ product.title }}">
+    {% if product.images.all %}
+    <div class="card shadow category-item py-2 px-2 d-flex">
+      {% with first_image=product.images.all.0 %}
+        {% if first_image %}
+          <img id="mainImage" src="{{ first_image.image.url }}" class="img-fluid cursor-pointer" data-bs-toggle="modal" data-bs-target="#imageModal" alt="{{ product.title }}">
+        {% else %}
+          <div class="card-img-top img-fluid item-placeholder">No image</div>
+        {% endif %}
+      {% endwith %}
     </div>
     {% endif %}
     {% if product.images.all %}
@@ -14,11 +20,11 @@
       <div class="col-12">
         <h3>More Images</h3>
         <div class="row">
-          {% for image in product.images.all %}
-          <div class="col more-images mb-4">
-            <img id="otherImage" src="{{ image.image.url }}" class="img-fluid cursor-pointer" onclick="updateMainImage(this)" alt="{{ product.title }}">
+          <div class="more-images d-flex">
+            {% for image in product.images.all %}
+              <img id="otherImage" src="{{ image.image.url }}" class="shadow cursor-pointer mx-1" onclick="updateMainImage(this)" alt="{{ product.title }}">
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
       </div>
     </div>

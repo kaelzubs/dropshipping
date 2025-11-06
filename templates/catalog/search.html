@@ -13,16 +13,20 @@
             <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </form>
-
     {% if query %}
         <p>Showing results for: <strong>{{ query }}</strong></p>
-        
         {% if products %}
             <div class="row">
                 {% for product in page_obj %}
                     <div class="col-md-3 mb-4">
-                      <div class="card h-100">
-                          <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                      <div class="card shadow py-2 px-2 d-flex">
+                          {% with first_image=product.images.all.0 %}
+                            {% if first_image %}
+                              <img src="{{ first_image.image.url }}" class="card-img-top img-fluid" alt="{{ product.title }}">
+                            {% else %}
+                              <div class="card-img-top img-fluid item-placeholder">No image</div>
+                            {% endif %}
+                          {% endwith %}
                           <div class="card-body">
                           <h5 class="card-title">{{ product.title }}</h5>
                           <p class="card-text">₦{{ product.price|floatformat:2|intcomma }}</p>

@@ -4,10 +4,10 @@
 {% block content %}
 <div class="row mb-3">
   <!-- Sidebar with categories -->
-   <h3 class='px-3'>Categories:</h3>
+   <h3>Categories:</h3>
   <div class="category-grid mb-4 category-list">
     {% for c in categories %}
-    <div class="category-item pt-2 px-2">
+    <div class="card shadow category-item py-2 px-2">
       <a href="{% url 'catalog:category_list_by_category' c.slug %}">
         <div class="image-grid">
           {% if c.images.all %}
