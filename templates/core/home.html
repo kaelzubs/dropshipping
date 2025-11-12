@@ -10,12 +10,12 @@
 
 <div class="row">
   {% for product in products %}
-  <div class="col-md-4 mb-4 p-2 main-div">
+  <div class="col-md-3 mb-4 p-2 main-div">
     <div class="card shadow py-2 pl-2 d-flex">
         <div class='image-container'>
           {% with first_image=product.images.all.0 %}
             {% if first_image %}
-              <img src="{{ first_image.image.url }}" class="card-img-top img-fluid" alt="{{ product.title }}">
+              <img src="{{ first_image.image.url }}" class="card-img-top" alt="{{ product.title }}">
             {% else %}
               <div class="card-img-top img-fluid item-placeholder">No image</div>
             {% endif %}
