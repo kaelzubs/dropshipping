@@ -473,7 +473,6 @@ h2.jumb {
     max-width: 100%;        /* Fill full width of card */
     height: auto;      /* Set a fixed height for mobile */
     object-fit: cover;  /* Crop to fill div */
-    display: flex;     /* Remove inline spacing */
     margin: 0 auto;  /* Center the image */
     padding-right: 8px;
   }
@@ -493,7 +492,6 @@ h2.jumb {
     height: auto;      /* Set a fixed height for mobile */
     object-fit: cover;  /* Crop to fill div */
     margin: 0 auto;  /* Center the image */ 
-    display: flex;    /* Remove inline spacing */
     padding-right: 8px;
   }
   .image-container {
