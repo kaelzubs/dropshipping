@@ -470,7 +470,7 @@ h2.jumb {
 /* Make card-img-top fill its parent div on mobile */
 @media (max-width: 768px) {
   .card-img-top {
-    max-width: 100%;        /* Fill full width of card */
+    width: 100%;        /* Fill full width of card */
     height: auto;      /* Set a fixed height for mobile */
     object-fit: cover;  /* Crop to fill div */
     margin: 0 auto;  /* Center the image */
@@ -488,7 +488,7 @@ h2.jumb {
 
 @media (max-width: 576px) {
   .card-img-top {
-    max-width: 100%;        /* Fill full width of card */
+    width: 100%;        /* Fill full width of card */
     height: auto;      /* Set a fixed height for mobile */
     object-fit: cover;  /* Crop to fill div */
     margin: 0 auto;  /* Center the image */ 
