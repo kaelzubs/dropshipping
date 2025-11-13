@@ -39,7 +39,7 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 # Allow all hosts in development, restrict in production
 # DEBUG = os.getenv('DEBUG')
-DEBUG=False
+DEBUG=os.getenv('DEBUG', 'True') == 'True'
 if DEBUG == True:
     ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django.contrib.sitemaps",
     "django.contrib.humanize",
     'core',
     'catalog',
@@ -64,7 +65,24 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'accounts',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',   # Example: Google
+    'allauth.socialaccount.providers.facebook', # Example: Facebook
+
 ]
+
+SITE_ID = 2
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",  # default
+    "allauth.account.auth_backends.AuthenticationBackend",  # allauth
+]
+
+LOGIN_REDIRECT_URL = "core:home"   # where users go after login
+LOGOUT_REDIRECT_URL = "core:home"  # where users go after logout
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -81,6 +99,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

@@ -22,6 +22,14 @@ from django.shortcuts import render
 from django.conf.urls import handler404, handler500, handler403
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import RedirectView
+from django.contrib.sitemaps.views import sitemap
+from shop.sitemaps import ProductSitemap, CategorySitemap, StaticViewSitemap
+
+sitemaps_dict = {
+    "products": ProductSitemap,
+    "categories": CategorySitemap,
+    "static": StaticViewSitemap,
+}
 
 def custom_permission_denied(request, exception):
     return render(request, "errors/403.html", status=403)
@@ -43,7 +51,8 @@ urlpatterns = [
     path('orders/', include('orders.urls')),
     path('suppliers/', include('suppliers.urls')),
     path('accounts/', include('accounts.urls', namespace="accounts")),
-    path('favicon.ico/', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.png')))
+    path('favicon.ico/', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.png'))),
+    path("sitemap.xml/", sitemap, {"sitemaps": sitemaps_dict}, name="django_sitemap"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:

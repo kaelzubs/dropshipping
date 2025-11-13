@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <link href="{% static 'img/favicon.png' %}" type="image/png" rel="icon">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <style>
     /* Full-screen overlay */
     .loader-overlay {
@@ -145,9 +146,15 @@
             </div>
           </form>
           <div>
-            <a href="#" class="text-light mr-2"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-light mr-2"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-light"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="text-light mr-2">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="{{ request.build_absolute_uri }}" class="text-light mr-2" onclick="copyShareLink();">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="{{ request.build_absolute_uri }}" class="text-light" onclick="copyShareLink();">
+              <i class="fab fa-tiktok"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -266,6 +273,14 @@
         });
       });
     });
+  </script>
+  <script>
+  function copyShareLink() {
+    const link = "{{ request.build_absolute_uri }}";
+    navigator.clipboard.writeText(link).then(() => {
+      alert("Product link copied! Paste it into Instagram or TikTok.");
+    });
+  }
   </script>
 </body>
 </html>

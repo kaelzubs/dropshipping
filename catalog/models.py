@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=120, unique=True)
@@ -38,6 +39,9 @@ class Product(models.Model):
     
     class Meta:
         ordering = ["-created_at", "title"]
+        
+    def get_absolute_url(self):
+        return reverse("catalog:detail", args=[self.slug])
 
     def save(self, *args, **kwargs):
         if not self.slug: self.slug = slugify(self.title)

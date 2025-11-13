@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from catalog.models import Product
 import json
 from datetime import datetime
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse
+from django.conf import settings
+
 
 
 CONSENT_COOKIE_NAME = "cookie_consent"
@@ -49,3 +52,19 @@ def cookie_settings(request):
 
 def restricted_view(request):
     raise PermissionDenied
+
+def robots_txt(request):
+    if settings.DEBUG:
+        # Block all crawlers in development/staging
+        content = "User-agent: *\nDisallow: /"
+    else:
+        # Allow crawlers in production
+        content = (
+            "User-agent: *\n"
+            "Disallow: /admin/\n"
+            "Disallow: /cart/\n"
+            "Disallow: /checkout/\n"
+            "Allow: /\n"
+            "Sitemap: https://kaelzubs.pythonanywhere.com/sitemap.xml\n"
+        )
+    return HttpResponse(content, content_type="text/plain")
