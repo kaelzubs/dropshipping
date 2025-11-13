@@ -40,8 +40,7 @@
             <button type="submit" class="btn btn-primary btn-block">Log In</button>
             <div class="text-center my-3">
               {% if 'google' in socialaccount_providers %}
-                <a href="{% provider_login_url 'google' %}" 
-                  class="btn btn-danger btn-block mb-2">
+                <a href="{% provider_login_url 'google' %}" class="btn btn-danger btn-block mb-2">
                   <i class="fab fa-google mr-2"></i> Login with Google
                 </a>
               {% else %}
@@ -49,8 +48,7 @@
               {% endif %}
 
               {% if 'facebook' in socialaccount_providers %}
-                <a href="{% provider_login_url 'facebook' %}" 
-                  class="btn btn-primary btn-block">
+                <a href="{% provider_login_url 'facebook' %}" class="btn btn-primary btn-block">
                   <i class="fab fa-facebook-f mr-2"></i> Login with Facebook
                 </a>
               {% else %}
